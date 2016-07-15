@@ -1,0 +1,24 @@
+{
+  "name": "ALICE",
+  "version": "0.0.0",
+  "homepage": "https://github.com/weitian-ding/ALICE",
+  "authors": [
+    "Allen <allendinghamilton@gmail.com>"
+  ],
+  "description": "A Node.js framework",
+  "main": "server.js",
+  "keywords": [
+    "real-time"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.7"
+  }
+}
