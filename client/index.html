@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ALICE Demo</title>
+</head>
+<body ng-app="app">
+    <header ng-include="'app/layout/header.html'"></header>
+    <div id="main-container">
+        <aside ng-include="'app/layout/sidebar.html'"></aside>
+        <div id="content">
+            <section ng-view></section>
+        </div>
+    </div>
+
+    Hello world!
+
+    <!-- libraries -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <!-- end libraries -->
+
+    <!-- custom modules -->
+    <script src="app/core/app.module.js"></script>
+    <script src="app/core/app.controller.js"></script>
+    <script src="app/core/bootstrap.js"></script>
+    <script src="app/core/routes.js"></script>
+    <!-- end custom modules -->
+</body>
+</html>

@@ -11,17 +11,13 @@
 
                 $routeProvider
                     .when('/', {
-                        redirectTo: '/dashboard'
-                    })
-                    .when('/dashboard', {
-                        templateUrl: 'app/dashboard/dashboard.html'
-                    })
-                    .when('/404', {
-                        templateUrl: 'app/page/404.html'
-                    })
+                        templateUrl: 'app/survey/survey.html'
+                    });
+                    /*
                     .otherwise({
                         redirectTo: '/404'
                     });
+                    */
             }]
         );
 
