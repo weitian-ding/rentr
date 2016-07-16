@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>ALICE Demo</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- end stylesheets -->
 </head>
 <body ng-app="app">
     <header ng-include="'app/layout/header.html'"></header>
-    <div id="main-container">
-        <aside ng-include="'app/layout/sidebar.html'"></aside>
-        <div id="content">
-            <section ng-view></section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar sidebar" ng-include="'app/layout/sidebar.html'"></div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="content">
+                <section ng-view></section>
+            </div>
         </div>
     </div>
 
-    Hello world!
-
-    <!-- libraries -->
+    <!-- local libraries -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-    <!-- end libraries -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- end local libraries -->
 
     <!-- custom modules -->
     <script src="app/core/app.module.js"></script>
