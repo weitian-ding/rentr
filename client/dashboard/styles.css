@@ -1,5 +1,13 @@
 @import "app/layout/sidebar.css";
 @import "app/layout/header.css";
+@import "app/login/login.css";
+
+/*
+ * remedy for removed href attributes
+ */
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}
 
 body {
     padding-top: 50px;

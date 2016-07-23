@@ -36,4 +36,12 @@ passport.deserializeUser(function(id, done) {
         });
 });
 
+// custom middleware function for secured routes
+passport.authMiddleware = function(req, res, next){
+    if (!req.isAuthenticated())
+        res.send(401);
+    else
+        next();
+};
+
 module.exports = passport;

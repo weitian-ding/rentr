@@ -7,11 +7,13 @@
 
     angular.module('app', [
         // Angular modules
-        'ngRoute'
+        'ngRoute',
+        'ngAnimate',
 
         // 3rd Party Modules
 
         // Custom modules
+        'app.login'
     ]);
 
 })();

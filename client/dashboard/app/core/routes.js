@@ -12,7 +12,11 @@
                 $routeProvider
                     .when('/', {
                         templateUrl: 'app/survey/survey.html'
-                    });
+                    })
+                    .when('/login', {
+                        templateUrl: 'app/login/login.html',
+                        controller: 'loginCtrl'
+                     });
                     /*
                     .otherwise({
                         redirectTo: '/404'
