@@ -12,6 +12,7 @@ var passport = require('./services/passport');
 // routers
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var login = require('./routes/login');
 
 // start configuration
 
@@ -27,8 +28,6 @@ app.use(session({ secret: 'keyboard cat' }));
 app.use(express.static(path.join(__dirname, 'client')));
 app.use(passport.initialize());
 app.use(passport.session());
-
-var login = require('./routes/login');
 
 // end configuration
 

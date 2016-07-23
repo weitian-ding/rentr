@@ -8,7 +8,12 @@ passport.use(new LocalStrategy(
         new models.User({ username: username })
             .fetch()
             .then(function (user) {
-                done(null, user);
+                if (!user)
+                {
+                    done(null, false);
+                } else {
+                    done(null, user);
+                }
             })
             .catch(function (err) {
                 done(err);
