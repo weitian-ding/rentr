@@ -1,8 +1,5 @@
-<div class="sidebar">
-    <ul class="nav nav-sidebar">
-        <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Reports</a></li>
-        <li><a href="#">Analytics</a></li>
-        <li><a href="#">Export</a></li>
-    </ul>
-</div>
+<md-list ng-controller="sidebarCtrl">
+    <md-list-item class="md-6-line" ng-click="null" ng-repeat="tab in navList">
+        <span>{{tab}}</span>
+    </md-list-item>
+</md-list>

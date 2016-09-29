@@ -2,49 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ALICE Demo</title>
 
     <!-- stylesheets -->
-    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
-    <link rel="stylesheet" href="../dashboard/styles.css">
     <!-- end stylesheets -->
 </head>
 
-<body ng-app="app">
-    <header ng-include="'app/layout/header.html'"></header>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar sidebar" ng-include="'app/layout/sidebar.html'" ng-if="false"></div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="content">
-                <section ng-view></section>
-            </div>
-        </div>
-    </div>
+<body ng-app="app" ng-cloak layout="column">
 
-    <!-- cloud libraries -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <!-- end cloud libraries -->
+<md-toolbar layout="row" ng-include="'app/layout/header.html'"></md-toolbar>
 
-    <!-- local libraries -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/angular-route/angular-route.js"></script>
-    <script src="../bower_components/angular-animate/angular-animate.js"></script>
-    <script src="../bower_components/angular-aria/angular-aria.js"></script>
-    <script src="../bower_components/angular-messages/angular-messages.js"></script>
-    <script src="../bower_components/angular-material/angular-material.js"></script>
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- end local libraries -->
+<!-- Wireframe Container #2 -->
+<div flex layout="row">
+    <!-- Wireframe Container #3 -->
+    <md-sidenav md-is-locked-open="true"
+                md-whiteframe="4"
+                ng-include="'app/layout/sidebar.html'"
+                flex="25">
+    </md-sidenav>
 
-    <!-- custom modules -->
-    <script src="../dashboard/app/core/app.module.js"></script>
-    <script src="../dashboard/app/core/app.controller.js"></script>
-    <script src="../dashboard/app/core/bootstrap.js"></script>
-    <script src="../dashboard/app/core/routes.js"></script>
-    <script src="../dashboard/app/core/bootstrap.js"></script>
-    <script src="../dashboard/app/login/login.module.js"></script>
-    <script src="../dashboard/app/login/login.controller.js"></script>
-    <!-- end custom modules -->
+    <!-- Wireframe Container #4 -->
+    <md-content flex id="content" layout-padding ng-view>
+    </md-content>
+</div>
+
+<!-- cloud libraries -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- end cloud libraries -->
+
+<!-- local libraries -->
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-route/angular-route.js"></script>
+<script src="../bower_components/angular-animate/angular-animate.js"></script>
+<script src="../bower_components/angular-aria/angular-aria.js"></script>
+<script src="../bower_components/angular-messages/angular-messages.js"></script>
+<script src="../bower_components/angular-material/angular-material.js"></script>
+<!-- end local libraries -->
+
+<!-- custom modules -->
+<script src="../dashboard/app/core/app.module.js"></script>
+<script src="../dashboard/app/core/app.controller.js"></script>
+<script src="../dashboard/app/core/routes.js"></script>
+<script src="../dashboard/app/login/login.module.js"></script>
+<script src="../dashboard/app/login/login.controller.js"></script>
+<script src="../dashboard/app/layout/sidebar.module.js"></script>
+<script src="../dashboard/app/layout/sidebar.controller.js"></script>
+<script src="../dashboard/app/layout/header.module.js"></script>
+<script src="../dashboard/app/layout/header.controller.js"></script>
+<!-- end custom modules -->
 </body>
 </html>

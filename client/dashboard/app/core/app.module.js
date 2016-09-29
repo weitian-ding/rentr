@@ -9,11 +9,14 @@
         // Angular modules
         'ngRoute',
         'ngAnimate',
+        'ngMaterial',
 
         // 3rd Party Modules
 
         // Custom modules
-        'app.login'
+        'app.login',
+        'app.sidebar',
+        'app.header'
     ]);
 
 })();
