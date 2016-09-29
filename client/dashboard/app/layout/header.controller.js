@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app.header')
-        .controller('headerCtrl', function ($scope) {
+        .controller('headerCtrl', function ($scope, $sessionStorage) {
         });
 })();
 

@@ -12,6 +12,7 @@
         'ngMaterial',
 
         // 3rd Party Modules
+        'ngStorage',
 
         // Custom modules
         'app.login',
