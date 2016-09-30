@@ -1,36 +1,39 @@
-<div layout="row" layout-wrap layout-align="center">
+<div id="login-dialog-box" layout="row" ng-controller="loginCtrl" layout-wrap layout-align="center center">
     <md-card flex="40">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline">Sign in</span>
             </md-card-title-text>
         </md-card-title>
-        <md-card-content>
+        <md-card-content layout-padding>
             <form name="loginForm">
                 <md-input-container class="md-block">
                     <label>Username</label>
-                    <input  required
-                            md-no-asterisk
-                            type="email"
-                            name="email"
-                            ng-model="user.email"
-                            ng-pattern="/^.+@.+\..+$/"/>
-                    <div ng-messages="user.email.$error" role="alert">
-                        <div ng-message-exp="['required', 'pattern']">
+                    <input required
+                           md-no-asterisk
+                           type="email"
+                           name="email"
+                           ng-model="user.email"
+                           ng-pattern="/^.+@.+\..+$/"/>
+                    <div ng-messages="loginForm.email.$error" role="alert">
+                        <div ng-message="pattern">
                             Your username must be a valid email address.
+                        </div>
+                        <div ng-message="required">
+                        Your username must be a valid email address.
                         </div>
                     </div>
                 </md-input-container>
 
                 <md-input-container class="md-block">
                     <label>Password</label>
-                    <input  required
-                            md-no-asterisk
-                            type="password"
-                            name="password"
-                            ng-model="user.password"/>
+                    <input required
+                           md-no-asterisk
+                           type="password"
+                           name="password"
+                           ng-model="user.password"/>
                     <div ng-messages="user.password.$error" role="alert">
-                        <div ng-message-exp="['required']">
+                        <div ng-message="required">
                             Your must enter a password.
                         </div>
                     </div>
@@ -39,8 +42,9 @@
                 <div layout="row" layout-align="center">
                     <md-button class="md-raised md-primary"
                                type="submit"
-                    ng-click="login()">
-                        Log in</md-button>
+                               ng-click="login()">
+                        Log in
+                    </md-button>
                 </div>
             </form>
         </md-card-content>

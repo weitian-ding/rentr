@@ -3,6 +3,7 @@
 
     angular.module('app.login')
         .controller('loginCtrl', function ($scope, $sessionStorage, $http) {
+            $scope.user = {};
 
             $scope.login = function() {
                 $http({

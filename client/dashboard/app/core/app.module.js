@@ -10,9 +10,13 @@
         'ngRoute',
         'ngAnimate',
         'ngMaterial',
+        'ngMessages',
+
 
         // 3rd Party Modules
         'ngStorage',
+        'ui.router',
+
 
         // Custom modules
         'app.login',

@@ -7,26 +7,12 @@
 
     <!-- stylesheets -->
     <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="styles.css">
     <!-- end stylesheets -->
 </head>
 
-<body ng-app="app" ng-cloak layout="column">
+<body ng-app="app" ng-cloak layout="column" ui-view>
 
-<md-toolbar layout="row" ng-include="'app/layout/header.html'"></md-toolbar>
-
-<!-- Wireframe Container #2 -->
-<div flex layout="row">
-    <!-- Wireframe Container #3 -->
-    <md-sidenav md-is-locked-open="true"
-                md-whiteframe="4"
-                ng-include="'app/layout/sidebar.html'"
-                flex="25">
-    </md-sidenav>
-
-    <!-- Wireframe Container #4 -->
-    <md-content flex id="content" layout-padding ng-view>
-    </md-content>
-</div>
 
 <!-- cloud libraries -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

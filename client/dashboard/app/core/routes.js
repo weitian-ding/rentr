@@ -5,6 +5,8 @@
 (function () {
     'use strict';
 
+
+    /*
     angular.module('app')
         .config(['$routeProvider', function($routeProvider) {
                 var routes, setRoutes;
@@ -17,12 +19,26 @@
                         templateUrl: 'app/login/login.html',
                         controller: 'loginCtrl'
                      });
-                    /*
                     .otherwise({
                         redirectTo: '/404'
                     });
-                    */
             }]
         );
+        */
+
+    angular.module('app')
+        .config(function($stateProvider, $urlRouterProvider) {
+            $urlRouterProvider.otherwise("/login");
+
+            $stateProvider
+                .state('login', {
+                    url: "/login",
+                    templateUrl: 'app/login/login.html'
+                })
+                .state('home', {
+                    url: '/home',
+                    templateUrl: 'app/layout/wireframe.html'
+                });
+        });
 
 })();
