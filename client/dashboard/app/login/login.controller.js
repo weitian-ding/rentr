@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app.login')
-        .controller('loginCtrl', function ($scope, $sessionStorage, $http) {
+        .controller('loginCtrl', function ($scope, $sessionStorage, $http, $location) {
             $scope.user = {};
 
             $scope.login = function() {
@@ -16,6 +16,8 @@
                 }).success(function (user) {
                     console.log(user);
                     $sessionStorage.first_name = user.first_name;
+                    $location.path("home");
+
                 });
             }
         });
