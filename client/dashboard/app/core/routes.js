@@ -25,7 +25,7 @@
 
     angular.module('app')
         .config(function ($stateProvider, $urlRouterProvider) {
-            var checkLoggedin = function ($q, $timeout, $http, $location) {
+            var checkLoggedIn = function ($q, $timeout, $http, $location) {
                 // Initialize a new promise
                 var deferred = $q.defer();
                 // Make an AJAX call to check if the user is logged in
@@ -54,7 +54,7 @@
                     url: '/home',
                     templateUrl: 'app/layout/wireframe.html',
                     resolve: {
-                        loggedin: checkLoggedin
+                        loggedIn: checkLoggedIn
                     }
                 });
         });
