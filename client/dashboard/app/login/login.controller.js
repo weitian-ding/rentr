@@ -5,7 +5,7 @@
         .controller('loginCtrl', function ($scope, sessionService, $http, $location) {
             $scope.user = {};
 
-            $scope.login = function() {
+            $scope.login = function () {
                 $http({
                     method: 'POST',
                     url: '/users/login',
@@ -21,6 +21,6 @@
                     console.log(response.data || "login failed");
                     console.log(response.status);
                 });
-            }
-        });
+            };
+        })
 })();

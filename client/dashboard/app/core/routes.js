@@ -1,7 +1,3 @@
-/**
- * Created by Allen on 2016-07-14.
- */
-
 (function () {
     'use strict';
 
@@ -29,7 +25,7 @@
 
     angular.module('app')
         .config(function ($stateProvider, $urlRouterProvider) {
-            var checkLoggedin = function ($q, $timeout, $http, $location, $rootScope) {
+            var checkLoggedin = function ($q, $timeout, $http, $location) {
                 // Initialize a new promise
                 var deferred = $q.defer();
                 // Make an AJAX call to check if the user is logged in
@@ -40,7 +36,6 @@
                     // Not Authenticated
                     else {
                         console.log('not authorized');
-                        $rootScope.message = 'You need to log in.';
                         deferred.reject();
                         $location.path('login');
                     }
