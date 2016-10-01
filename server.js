@@ -10,9 +10,7 @@ var session = require('express-session');
 var passport = require('./services/passport');
 
 // routers
-var routes = require('./routes/index');
 var users = require('./routes/users');
-var login = require('./routes/login');
 
 // start configuration
 
@@ -32,10 +30,7 @@ app.use(passport.session());
 // end configuration
 
 // start mounting routers
-
-app.use('/', routes);
 app.use('/users', users);
-app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

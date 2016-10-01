@@ -8,7 +8,7 @@
             $scope.login = function() {
                 $http({
                     method: 'POST',
-                    url: '/login',
+                    url: '/users/login',
                     data: {
                         username: $scope.user.email,
                         password: $scope.user.password
