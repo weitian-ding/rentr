@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ALICE Demo</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- end stylesheets -->
+</head>
+
+<body ng-app="app" ng-cloak layout="column" ui-view>
+
+
+<!-- cloud libraries -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- end cloud libraries -->
+
+<!-- local libraries -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/ngstorage/ngStorage.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<!-- end local libraries -->
+
+<!-- custom modules -->
+<script src="app/core/app.module.js"></script>
+<script src="app/core/app.controller.js"></script>
+<script src="app/core/routes.js"></script>
+<script src="app/core/session.service.js"></script>
+
+<script src="app/login/login.module.js"></script>
+<script src="app/login/login.controller.js"></script>
+<script src="app/dashboard/layout/sidebar.module.js"></script>
+<script src="app/dashboard/layout/sidebar.controller.js"></script>
+<script src="app/dashboard/layout/header.module.js"></script>
+<script src="app/dashboard/layout/header.controller.js"></script>
+<!-- end custom modules -->
+</body>
+</html>

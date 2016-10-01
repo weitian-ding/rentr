@@ -52,7 +52,7 @@
                 })
                 .state('home', {
                     url: '/home',
-                    templateUrl: 'app/layout/wireframe.html',
+                    templateUrl: 'app/dashboard/layout/wireframe.html',
                     resolve: {
                         loggedIn: checkLoggedIn
                     }
