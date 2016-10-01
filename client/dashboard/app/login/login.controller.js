@@ -20,7 +20,6 @@
                 }).catch(function (response) {
                     console.log(response.data || "login failed");
                     console.log(response.status);
-                });
             }
         });
 })();
