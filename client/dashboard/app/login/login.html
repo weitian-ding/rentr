@@ -6,7 +6,7 @@
             </md-card-title-text>
         </md-card-title>
         <md-card-content layout-padding>
-            <form name="loginForm">
+            <form name="loginForm" ng-submit="login()">
                 <md-input-container class="md-block">
                     <label>Username</label>
                     <input required
@@ -41,8 +41,7 @@
 
                 <div layout="row" layout-align="center">
                     <md-button class="md-raised md-primary"
-                               type="submit"
-                               ng-click="login()">
+                               type="submit">
                         Log in
                     </md-button>
                 </div>
