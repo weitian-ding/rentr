@@ -1,3 +1,7 @@
 #login-dialog-box {
     min-height: 500px;
 }
+
+#login-dialog-box i {
+   text-align: center;
+}
