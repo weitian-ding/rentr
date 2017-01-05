@@ -16,7 +16,7 @@
                 }).success(function (user) {
                     console.log(user);
                     sessionService.set_first_name(user.first_name);
-                    $location.path("home");
+                    $location.path("");
                 }).catch(function (response) {
                     console.log(response.data || "login failed");
                     console.log(response.status);

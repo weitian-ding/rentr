@@ -50,9 +50,9 @@
                     url: "/login",
                     templateUrl: 'app/login/login.html'
                 })
-                .state('home', {
-                    url: '/home',
-                    templateUrl: 'app/dashboard/layout/wireframe.html',
+                .state('rentr', {
+                    url: '/',
+                    templateUrl: 'app/rentr/layout/wireframe.html',
                     resolve: {
                         loggedIn: checkLoggedIn
                     }
