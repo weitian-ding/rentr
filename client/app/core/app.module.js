@@ -19,9 +19,7 @@
 
 
         // Custom modules
-        'app.login',
-        'app.sidebar',
-        'app.header'
+        'app.login'
     ]);
 
 })();

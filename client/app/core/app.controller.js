@@ -6,9 +6,5 @@
     'use strict';
 
     angular.module('app')
-        .controller('AppCtrl', [ '$scope', '$rootScope', '$route', '$document', 'appConfig', AppCtrl]); // overall control
-
-    function AppCtrl($scope, $rootScope, $route, $document, appConfig) {
-    }
-
+        .controller('AppCtrl');
 })();

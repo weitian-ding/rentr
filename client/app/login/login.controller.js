@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app.login')
-        .controller('loginCtrl', function ($scope, sessionService, $http, $location) {
+        .controller('loginCtrl', function ($scope, sessionService, $http, $state) {
             $scope.user = {};
 
             $scope.login = function () {
@@ -16,7 +16,7 @@
                 }).success(function (user) {
                     console.log(user);
                     sessionService.set_first_name(user.first_name);
-                    $location.path("");
+                    $state.go('home');
                 }).catch(function (response) {
                     console.log(response.data || "login failed");
                     console.log(response.status);
