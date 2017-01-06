@@ -16,7 +16,7 @@
                 }).success(function (user) {
                     console.log(user);
                     sessionService.set_first_name(user.first_name);
-                    $state.go('home');
+                    $state.go('home.welcome');
                 }).catch(function (response) {
                     console.log(response.data || "login failed");
                     console.log(response.status);
