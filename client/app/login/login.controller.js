@@ -13,11 +13,11 @@
                         username: $scope.user.email,
                         password: $scope.user.password
                     }
-                }).success(function (user) {
+                }).then(function (user) {
                     console.log(user);
                     sessionService.set_first_name(user.first_name);
                     $state.go('home.welcome');
-                }).catch(function (response) {
+                }, function (response) {
                     console.log(response.data || "login failed");
                     console.log(response.status);
                 });

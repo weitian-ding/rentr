@@ -8,3 +8,15 @@
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 .material-icons.md-xl { font-size: 96px; }
+
+
+/*
+md-input-container .md-auto-hide .md-input-message-animation:not(.ng-animate), md-input-container .md-input-message-animation.ng-enter, md-input-container:not(.md-input-invalid) .md-auto-hide .md-input-message-animation {
+    opacity: 1;
+    margin-top: 0px;
+}
+
+.ng-messages-fix{
+    visibility: hidden;
+}
+*/

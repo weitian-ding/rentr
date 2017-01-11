@@ -1,1 +1,48 @@
-<h1>Hello world!</h1>
+<div layout="column" ng-cloak>
+    <md-content layout-padding>
+        <br/>
+        <form flex name="queryForm">
+
+            <div layout="row" layout-align="center">
+                <md-input-container flex="15">
+                    <label>City</label>
+                    <input required md-no-asterisk name="city" ng-model="query.city">
+                    <div ng-messages="queryForm.city.$error" ng-class="{ 'ng-messages-fix' : !form.inputField.$touched}">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Move-in date</label>
+                    <md-datepicker required md-no-asterisk ng-model="query.moveInDate" name="moveInDate"></md-datepicker>
+
+                    <div ng-messages="queryForm.moveInDate.$error" >
+                        <div ng-message="valid">Please enter a valid date.</div>
+                        <div ng-message="required">Please enter a move-in date.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Move-out date</label>
+                    <md-datepicker required md-no-asterisk ng-model="query.moveOutDate" name="moveOutDate" md-min-date="query.moveInDate"></md-datepicker>
+
+                    <div ng-messages="queryForm.moveOutDate.$error" ng-class="{ 'ng-messages-fix' : !form.inputField.$touched}">
+                        <div ng-message="valid">The entered value is not a date!</div>
+                        <div ng-message="required">This date is required!</div>
+                        <div ng-message="mindate">Date is too early!</div>
+                    </div>
+                </md-input-container>
+
+                <div flex="5"></div>
+
+                <div>
+                    <md-button class="md-raised md-primary" type="submit">Search</md-button>
+                </div>
+
+            </div>
+
+
+
+        </form>
+    </md-content>
+</div>
