@@ -1,2 +1,2 @@
-# ALICE
-A Node.js framework
+# Rentr
+
