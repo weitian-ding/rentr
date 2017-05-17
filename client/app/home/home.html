@@ -3,45 +3,44 @@
         <br/>
         <form flex name="queryForm">
 
-            <div layout="row" layout-align="center">
-                <md-input-container flex="15">
-                    <label>City</label>
-                    <input required md-no-asterisk name="city" ng-model="query.city">
-                    <div ng-messages="queryForm.city.$error" ng-class="{ 'ng-messages-fix' : !form.inputField.$touched}">
-                        <div ng-message="required">This is required.</div>
-                    </div>
-                </md-input-container>
+            <div layout="column" layout-gt-sm="row" layout-align="center left">
 
-                <md-input-container>
-                    <label>Move-in date</label>
-                    <md-datepicker required md-no-asterisk ng-model="query.moveInDate" name="moveInDate"></md-datepicker>
+                <div layout="row">
+                    <md-input-container class="md-block" flex="60">
+                        <label>City</label>
+                        <md-select ng-model="query.city">
+                            <md-option required ng-repeat="city in cities" value="{{cities}}">
+                                {{state.abbrev}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
 
-                    <div ng-messages="queryForm.moveInDate.$error" >
-                        <div ng-message="valid">Please enter a valid date.</div>
-                        <div ng-message="required">Please enter a move-in date.</div>
-                    </div>
-                </md-input-container>
+                    <md-input-container flex="40">
+                        <label>Tenants</label>
+                        <input required md-no-asterisk name="city" ng-model="query.tenants">
+                    </md-input-container>
+                </div>
 
-                <md-input-container>
-                    <label>Move-out date</label>
-                    <md-datepicker required md-no-asterisk ng-model="query.moveOutDate" name="moveOutDate" md-min-date="query.moveInDate"></md-datepicker>
 
-                    <div ng-messages="queryForm.moveOutDate.$error" ng-class="{ 'ng-messages-fix' : !form.inputField.$touched}">
-                        <div ng-message="valid">The entered value is not a date!</div>
-                        <div ng-message="required">This date is required!</div>
-                        <div ng-message="mindate">Date is too early!</div>
-                    </div>
-                </md-input-container>
+                <div layout="column" layout-gt-sm="row">
+                    <md-input-container>
+                        <label>Start</label>
+                        <md-datepicker required md-no-asterisk ng-model="query.moveInDate" name="moveInDate"></md-datepicker>
+                    </md-input-container>
 
-                <div flex="5"></div>
-
-                <div>
-                    <md-button class="md-raised md-primary" type="submit">Search</md-button>
+                    <md-input-container>
+                        <label>End</label>
+                        <md-datepicker required md-no-asterisk ng-model="query.moveOutDate" name="moveOutDate" md-min-date="query.moveInDate"></md-datepicker>
+                    </md-input-container>
                 </div>
 
             </div>
 
-
+            <div layout="row" layout-align="start" layout-align-gt-sm="center">
+                <div>
+                    <md-button class="md-raised md-primary" type="submit">Search</md-button>
+                </div>
+            </div>
 
         </form>
     </md-content>

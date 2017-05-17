@@ -7,7 +7,8 @@
     angular.module('app').component('home', {
         templateUrl: 'app/home/home.html',
         controller: function($scope) {
-            $scope.query = {}
+            $scope.query = {};
+            $scope.city = ['Waterloo', 'Toronto'];
         }
     })
 })();
