@@ -9,15 +9,19 @@
                     <md-input-container class="md-block" flex="60">
                         <label>City</label>
                         <md-select ng-model="query.city">
-                            <md-option required ng-repeat="city in cities" value="{{cities}}">
-                                {{state.abbrev}}
+                            <md-option required ng-repeat="city in cities" value="{{city.city}}">
+                                {{city.city}}, {{city.state}}
                             </md-option>
                         </md-select>
                     </md-input-container>
 
-                    <md-input-container flex="40">
+                    <md-input-container class="md-block" flex="40">
                         <label>Tenants</label>
-                        <input required md-no-asterisk name="city" ng-model="query.tenants">
+                        <md-select ng-model="query.tenants">
+                            <md-option required ng-repeat="tenant in tenants" value="{{tenant}}">
+                                {{tenant}}
+                            </md-option>
+                        </md-select>
                     </md-input-container>
                 </div>
 
@@ -25,7 +29,7 @@
                 <div layout="column" layout-gt-sm="row">
                     <md-input-container>
                         <label>Start</label>
-                        <md-datepicker required md-no-asterisk ng-model="query.moveInDate" name="moveInDate"></md-datepicker>
+                        <md-datepicker required md-no-asterisk ng-model="query.moveInDate" name="moveInDate" md-min-date="today"></md-datepicker>
                     </md-input-container>
 
                     <md-input-container>

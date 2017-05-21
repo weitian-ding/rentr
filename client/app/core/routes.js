@@ -44,6 +44,7 @@
                         loggedIn: checkLoggedIn
                     }
                 })
+
                 .state('home.query', {
                     url: '',
                     component: 'home'

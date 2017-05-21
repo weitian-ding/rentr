@@ -8,7 +8,9 @@
         templateUrl: 'app/home/home.html',
         controller: function($scope) {
             $scope.query = {};
-            $scope.city = ['Waterloo', 'Toronto'];
+            $scope.cities = [{city: 'Waterloo', state: 'ON'}, {city :'Toronto', state: 'ON'}];
+            $scope.tenants = [1, 2, 3, 4, 5, 6];
+            $scope.today = new Date();
         }
     })
 })();

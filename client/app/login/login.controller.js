@@ -14,8 +14,8 @@
                         password: $scope.user.password
                     }
                 }).then(function (user) {
-                    console.log(user);
-                    sessionService.set_first_name(user.first_name);
+                    console.log(user.data);
+                    sessionService.set_first_name(user.data.first_name);
                     $state.go('home.query');
                 }, function (response) {
                     console.log(response.data || "login failed");
