@@ -1,4 +1,4 @@
-<div layout="column" ng-cloak>
+<div layout="column" layout-padding ng-cloak>
     <md-content layout-padding>
         <br/>
         <form flex name="queryForm">
@@ -8,8 +8,8 @@
                 <div layout="row">
                     <md-input-container class="md-block" flex="60">
                         <label>City</label>
-                        <md-select ng-model="query.city">
-                            <md-option required ng-repeat="city in cities" value="{{city.city}}">
+                        <md-select required md-no-asterisk ng-model="query.city">
+                            <md-option ng-repeat="city in cities" value="{{city.city}}">
                                 {{city.city}}, {{city.state}}
                             </md-option>
                         </md-select>
@@ -17,8 +17,8 @@
 
                     <md-input-container class="md-block" flex="40">
                         <label>Tenants</label>
-                        <md-select ng-model="query.tenants">
-                            <md-option required ng-repeat="tenant in tenants" value="{{tenant}}">
+                        <md-select required md-no-asterisk ng-model="query.tenants">
+                            <md-option  ng-repeat="tenant in tenants" value="{{tenant}}">
                                 {{tenant}}
                             </md-option>
                         </md-select>

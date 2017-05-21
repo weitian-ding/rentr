@@ -1,19 +1,22 @@
-<div layout="row">
-    <md-toolbar>
-        <div class="md-toolbar-tools">
-            <h2>
-                <span>Rentr</span>
-            </h2>
-            <span flex></span>
-            <h3>
-                <span>Signed in as {{first_name.charAt(0).toUpperCase() + first_name.slice(1)}}</span>
-            </h3>
-        </div>
-    </md-toolbar>
-</div>
+<div layout="column" style="height:100vh">
+
+    <div layout="row">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>
+                    <span>Rentr</span>
+                </h2>
+                <span flex></span>
+                <h3>
+                    <span>Signed in as {{first_name.charAt(0).toUpperCase() + first_name.slice(1)}}</span>
+                </h3>
+            </div>
+        </md-toolbar>
+    </div>
 
 
-<div flex layout="row">
-    <md-content flex id="content" layout-padding ui-view>
-    </md-content>
+    <div flex layout="row">
+        <md-content flex id="content" ui-view>
+        </md-content>
+    </div>
 </div>

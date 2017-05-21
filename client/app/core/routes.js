@@ -5,9 +5,8 @@
         .config(function ($stateProvider, $urlRouterProvider) {
 
             var checkLoggedIn = function ($q, $timeout, $http, $state) {
-                // Initialize a new promise
                 var deferred = $q.defer();
-                // Make an AJAX call to check if the user is logged in
+
                 $http.get('/users/loggedin').then(function (user) {
                     // Authenticated
                     if (user !== '0')
@@ -19,6 +18,7 @@
                         $state.go('login');
                     }
                 });
+
                 return deferred.promise;
             };
 
@@ -48,6 +48,11 @@
                 .state('home.query', {
                     url: '',
                     component: 'home'
+                })
+
+                .state('home.search', {
+                    url: '/search/results',
+                    component: 'search.results'
                 });
         });
 
