@@ -1,51 +1,49 @@
-<div layout="column" layout-padding ng-cloak>
-    <md-content layout-padding>
-        <br/>
-        <form flex name="queryForm">
+<md-content layout-padding>
+    <br/>
+    <form flex name="queryForm">
 
-            <div layout="column" layout-gt-sm="row" layout-align="center left">
+        <div layout="column" layout-gt-sm="row" layout-align="center left">
 
-                <div layout="row">
-                    <md-input-container class="md-block" flex="60">
-                        <label>City</label>
-                        <md-select required md-no-asterisk ng-model="query.city">
-                            <md-option ng-repeat="city in cities" value="{{city.city}}">
-                                {{city.city}}, {{city.state}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
+            <div layout="row">
+                <md-input-container class="md-block" flex="60">
+                    <label>City</label>
+                    <md-select required md-no-asterisk ng-model="query.city">
+                        <md-option ng-repeat="city in cities" value="{{city.city}}">
+                            {{city.city}}, {{city.state}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
 
-                    <md-input-container class="md-block" flex="40">
-                        <label>Tenants</label>
-                        <md-select required md-no-asterisk ng-model="query.tenants">
-                            <md-option  ng-repeat="tenant in tenants" value="{{tenant}}">
-                                {{tenant}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-
-
-                <div layout="column" layout-gt-sm="row">
-                    <md-input-container>
-                        <label>Start</label>
-                        <md-datepicker required md-no-asterisk ng-model="query.moveInDate" name="moveInDate" md-min-date="today"></md-datepicker>
-                    </md-input-container>
-
-                    <md-input-container>
-                        <label>End</label>
-                        <md-datepicker required md-no-asterisk ng-model="query.moveOutDate" name="moveOutDate" md-min-date="query.moveInDate"></md-datepicker>
-                    </md-input-container>
-                </div>
-
+                <md-input-container class="md-block" flex="40">
+                    <label>Tenants</label>
+                    <md-select required md-no-asterisk ng-model="query.tenants">
+                        <md-option  ng-repeat="tenant in tenants" value="{{tenant}}">
+                            {{tenant}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
             </div>
 
-            <div layout="row" layout-align="start" layout-align-gt-sm="center">
-                <div>
-                    <md-button class="md-raised md-primary" type="submit">Search</md-button>
-                </div>
+
+            <div layout="column" layout-gt-sm="row">
+                <md-input-container>
+                    <label>Start</label>
+                    <md-datepicker required md-no-asterisk ng-model="query.moveInDate" name="moveInDate" md-min-date="today"></md-datepicker>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>End</label>
+                    <md-datepicker required md-no-asterisk ng-model="query.moveOutDate" name="moveOutDate" md-min-date="query.moveInDate"></md-datepicker>
+                </md-input-container>
             </div>
 
-        </form>
-    </md-content>
-</div>
+        </div>
+
+        <div layout="row" layout-align="start" layout-align-gt-sm="center">
+            <div>
+                <md-button class="md-raised md-primary" type="submit">Search</md-button>
+            </div>
+        </div>
+
+    </form>
+</md-content>

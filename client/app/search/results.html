@@ -1,44 +1,39 @@
-<md-toolbar md-scroll-shrink class="md-hue-3">
+<!-- <md-toolbar md-scroll-shrink class="md-hue-3">
     <div class="md-toolbar-tools">
         <span>Search Results</span>
     </div>
 </md-toolbar>
-
-<md-content style="height: 100%;">
-
-    <md-subheader class="md-primary">20 properties</md-subheader>
-
-    <!--
-    <md-list layout-padding>
-        <md-list-item class="md-3-line" ng-repeat="property in properties" ng-click="null">
-            <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
-            <div class="md-list-item-text" layout="column">
-                <h3>{{ property.addr.line1 }}</h3>
-                <h4>{{ property.addr.city }}, {{property.addr.post_code}}</h4>
-                <p>${{ property.rent }}/month</p>
-            </div>
-        </md-list-item>
-
-    </md-list> -->
-    <div layout="column" layout-gt-sm="row" layout-wrap layout-align="center">
-        <md-card ng-repeat="property in properties" flex-gt-sm="45">
-            <img ng-src="images/sample_room.jpg" class="md-card-image" alt="No Image">
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">{{property.title}}</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-               <p>${{ property.rent }}/month, {{property.capacity}} room, {{property.type}}</p>
-            </md-card-content>
-            <md-card-actions layout="row" layout-align="end center">
-                <md-button>Action 1</md-button>
-                <md-button>Action 2</md-button>
-            </md-card-actions>
-        </md-card>
-    </div>
+-->
 
 
+<md-subheader class="md-primary">20 properties found</md-subheader>
 
+<!--
+<md-list layout-padding>
+    <md-list-item class="md-3-line" ng-repeat="property in properties" ng-click="null">
+        <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+        <div class="md-list-item-text" layout="column">
+            <h3>{{ property.addr.line1 }}</h3>
+            <h4>{{ property.addr.city }}, {{property.addr.post_code}}</h4>
+            <p>${{ property.rent }}/month</p>
+        </div>
+    </md-list-item>
 
-</md-content>
+</md-list> -->
+<div layout="column" layout-gt-sm="row" layout-wrap layout-align="center">
+    <md-card ng-repeat="property in properties" flex-gt-sm="45">
+        <img ng-src="images/sample_room.jpg" class="md-card-image" alt="No Image">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{property.title}}</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+           <p>${{ property.rent }}/month, {{property.capacity}} room, {{property.type}}</p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button>Action 1</md-button>
+            <md-button>Action 2</md-button>
+        </md-card-actions>
+    </md-card>
+</div>
