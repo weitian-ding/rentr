@@ -1,4 +1,4 @@
-<div layout-padding layout-margin layout-gt-sm="column" layout-align-gt-sm="center center">
+<div layout-padding layout-margin layout-gt-sm="row" layout-align-gt-sm="center top">
     <div flex-gt-sm="60">
 
         <form name="userForm">
@@ -10,7 +10,7 @@
 
             <div layout="column" layout-gt-sm="row">
                 <md-input-container>
-                    <label>Rent</label>
+                    <label>Rent (CAD/month)</label>
                     <input md-no-asterisk name="rent" ng-model="post.rent" required>
                 </md-input-container>
 
@@ -45,8 +45,40 @@
                     <label>Postal Code</label>
                     <input md-no-asterisk name="post_code" ng-model="post.addr.post_code" required md-maxlength="6">
                 </md-input-container>
-                
+
             </div>
+
+
+            <div>
+                <div flow-init="{target: '/upload'}"
+                     flow-files-submitted="$flow.upload()"
+                     flow-file-success="$file.msg = $message">
+
+                    <div layout="column" ng-show="$flow.files.length">
+                        <md-card ng-repeat="img in $flow.files">
+                            <md-card-title>
+                                <md-card-title-text>
+                                    <span>{{img.name}}</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                            <md-card-content>
+                                <img class="md-card-image" style="max-width: 100%" flow-img="img" />
+                            </md-card-content>
+                        </md-card>
+                    </div>
+
+
+                    <div>
+                        <md-button flow-btn class="md-icon-button md-raised">
+                            <i class="material-icons md-dark">cloud_upload</i>
+                        </md-button>
+                        <span>Upload a picture</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <br/>
 
             <div>
                 <md-button class="md-raised md-primary">Post</md-button>

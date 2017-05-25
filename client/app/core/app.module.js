@@ -16,6 +16,7 @@
         // 3rd Party Modules
         'ngStorage',
         'ui.router',
+        'flow',
 
 
         // Custom modules
