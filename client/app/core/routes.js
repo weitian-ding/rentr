@@ -53,7 +53,13 @@
                 .state('home.search', {
                     url: '/search/results',
                     component: 'search.results'
-                });
+                })
+
+                .state('home.post', {
+                    url: '/post',
+                    templateUrl: 'app/post/post.html'
+                }
+                );
         });
 
 })();
