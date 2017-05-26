@@ -1,5 +1,5 @@
 <div
-     layout-padding
+     layout-padding layout-margin
      layout-gt-sm="row" layout-align-gt-sm="center top">
 
     <div flex-gt-sm="60">
@@ -51,43 +51,29 @@
 
             </div>
 
+            <div layout="column" ng-show="pictures.length">
+                <md-card flex ng-repeat="pic in pictures">
+                    <md-card-title>
+                        <md-truncate>{{pic.name}}</md-truncate>
+                    </md-card-title>
 
-            <div >
-                <div flow-init
-                     flow-file-added="fuck_you( $file, $event, $flow )">
+                    <md-card-content>
+                        <img class="md-card-image" style="max-width: 100%" ngf-thumbnail="pic" />
+                    </md-card-content>
+                </md-card>
+            </div>
 
-                    <div layout="column" ng-show="$flow.files.length">
-                        <md-card flex ng-repeat="img in $flow.files">
-                            <md-card-title>
-                                <md-truncate>{{img.name}}</md-truncate>
-                            </md-card-title>
-
-                            <md-card-content>
-                                <img class="md-card-image" style="max-width: 100%" flow-img="img" />
-                                <p>
-                                {{img.progress() * 100}}
-                                </p>
-                            </md-card-content>
-
-
-                        </md-card>
-                    </div>
-
-
-                    <div>
-                        <md-button flow-btn class="md-icon-button md-raised">
-                            <i class="material-icons md-dark">cloud_upload</i>
-                        </md-button>
-                        <span>Upload pictures</span>
-                    </div>
-
-                </div>
+            <div>
+                <md-button class="md-icon-button md-raised" ngf-select ng-model="pictures" ngf-multiple="true">
+                    <i class="material-icons md-dark">cloud_upload</i>
+                </md-button>
+                <span>Upload <ng-show ng-show="pictures.length">different</ng-show> pictures</span>
             </div>
 
             <br/>
 
             <div>
-                <md-button class="md-raised md-primary">Post</md-button>
+                <md-button class="md-raised md-primary" ng-click="uploadFiles(pictures)">Post</md-button>
             </div>
         </form>
 

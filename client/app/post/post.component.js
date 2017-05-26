@@ -7,17 +7,23 @@
 
     angular.module('app').component('post', {
         templateUrl: 'app/post/post.html',
-        controller: function($scope, $mdToast) {
-            $scope.obj = {};
+        controller: function($scope, $mdToast, Upload) {
+            $scope.pictures_to_upload = [];
 
-            
-            $scope.fuck_you = function ($file, $event, $flow) {
-                $mdToast.show(
-                    $mdToast.simple()
-                        .textContent('New image added.')
-                        .position('top')
-                        .hideDelay(3000)
-                );
+            $scope.uploadFiles = function (files) {
+                if (files && files.length) {
+                    Upload.upload({url: 'upload',
+                        data: {
+                            file: files
+                        }}).then(function (resp) {
+                            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+                        }, function (resp) {
+                            console.log('Error status: ' + resp.status);
+                        }, function (evt) {
+                            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                        });
+                }
             }
         }
     })
