@@ -1,4 +1,7 @@
-<div layout-padding layout-margin layout-gt-sm="row" layout-align-gt-sm="center top">
+<div
+     layout-padding
+     layout-gt-sm="row" layout-align-gt-sm="center top">
+
     <div flex-gt-sm="60">
 
         <form name="userForm">
@@ -49,21 +52,24 @@
             </div>
 
 
-            <div>
-                <div flow-init="{target: '/upload'}"
-                     flow-files-submitted="$flow.upload()"
-                     flow-file-success="$file.msg = $message">
+            <div >
+                <div flow-init
+                     flow-file-added="fuck_you( $file, $event, $flow )">
 
                     <div layout="column" ng-show="$flow.files.length">
-                        <md-card ng-repeat="img in $flow.files">
+                        <md-card flex ng-repeat="img in $flow.files">
                             <md-card-title>
-                                <md-card-title-text>
-                                    <span>{{img.name}}</span>
-                                </md-card-title-text>
+                                <md-truncate>{{img.name}}</md-truncate>
                             </md-card-title>
+
                             <md-card-content>
                                 <img class="md-card-image" style="max-width: 100%" flow-img="img" />
+                                <p>
+                                {{img.progress() * 100}}
+                                </p>
                             </md-card-content>
+
+
                         </md-card>
                     </div>
 
@@ -72,7 +78,7 @@
                         <md-button flow-btn class="md-icon-button md-raised">
                             <i class="material-icons md-dark">cloud_upload</i>
                         </md-button>
-                        <span>Upload a picture</span>
+                        <span>Upload pictures</span>
                     </div>
 
                 </div>

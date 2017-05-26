@@ -57,7 +57,7 @@
 
                 .state('home.post', {
                     url: '/post',
-                    templateUrl: 'app/post/post.html'
+                    component: 'post'
                 }
                 );
         });
