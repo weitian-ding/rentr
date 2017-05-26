@@ -12,12 +12,10 @@
         'ngMaterial',
         'ngMessages',
 
-
         // 3rd Party Modules
         'ngStorage',
         'ui.router',
         'ngFileUpload',
-
 
         // Custom modules
         'app.login'

@@ -6,11 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
+
 // services
 var passport = require('./services/passport');
 
 // routers
 var users = require('./routes/users');
+var upload = require('./routes/upload');
 
 // start configuration
 
@@ -24,6 +26,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(session({secret: 'keyboard cat'}));
 app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, 'client/bower_components/material-design-icons')));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -31,6 +34,7 @@ app.use(passport.session());
 
 // start mounting routers
 app.use('/users', users);
+app.use('/upload', upload);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -46,11 +50,7 @@ app.use(function (req, res, next) {
 // TODO remvoe this
 if (app.get('env') === 'development') {
     app.use(function (err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
+        console.log(err);
     });
 }
 

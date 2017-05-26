@@ -36,3 +36,5 @@ npm-debug.log
 knexfile.js
 
 *.jpg
+
+storage

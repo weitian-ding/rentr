@@ -10,11 +10,13 @@
         controller: function($scope, $mdToast, Upload) {
             $scope.pictures_to_upload = [];
 
-            $scope.uploadFiles = function (files) {
-                if (files && files.length) {
-                    Upload.upload({url: 'upload',
+            $scope.uploadFiles = function (photos) {
+                if (photos && photos.length) {
+                    Upload.upload({
+                        url: 'upload',
+                        arrayKey: '',
                         data: {
-                            file: files
+                            photos: photos
                         }}).then(function (resp) {
                             console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
                         }, function (resp) {
