@@ -8,9 +8,15 @@
     angular.module('app').component('post', {
         templateUrl: 'app/post/post.html',
         controller: function($scope, $mdToast, Upload) {
-            $scope.pictures_to_upload = [];
+            $scope.photos_to_upload = [];
 
-            $scope.uploadFiles = function (photos) {
+            $scope.$watchCollection('photos_submitted', function() {
+                if ($scope.photos_submitted) {
+                    $scope.photos_to_upload = $scope.photos_to_upload.concat($scope.photos_submitted);
+                }
+            });
+
+            $scope.uploadPhotos = function (photos) {
                 if (photos && photos.length) {
                     Upload.upload({
                         url: 'upload',
