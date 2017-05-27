@@ -3,6 +3,27 @@
     <div layout="row">
         <md-toolbar>
             <div class="md-toolbar-tools">
+
+                <md-menu>
+                    <md-button aria-label="Menu" class="md-icon-button" ng-mouseenter="$mdMenu.open()">
+                        <i md-menu-origin class="material-icons md-light">menu</i>
+                    </md-button>
+                    <md-menu-content width="4" ng-mouseleave="$mdMenu.close()">
+                        <md-menu-item>
+                            <md-button href="#/home">
+                                <i class="material-icons md-dark" md-menu-align-target>search</i>
+                                Search
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button href="#/home/post">
+                                <i class="material-icons md-dark" md-menu-align-target>message</i>
+                                Post
+                            </md-button>
+                        </md-menu-item>
+                </md-menu>
+
+
                 <h2>
                     <span>Rentr</span>
                 </h2>
