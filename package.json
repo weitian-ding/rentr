@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prestart": "npm install && bower install && knex migrate:latest",
+    "prestart": "sudo npm install && bower install && knex migrate:latest",
     "start": "node ./bin/www"
   },
   "dependencies": {
