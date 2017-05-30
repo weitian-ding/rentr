@@ -1,11 +1,11 @@
 {
-  "name": "ALICE",
+  "name": "rentr",
   "version": "0.0.0",
-  "homepage": "https://github.com/weitian-ding/ALICE",
+  "homepage": "https://github.com/weitian-ding/rentr",
   "authors": [
     "Allen <allendinghamilton@gmail.com>"
   ],
-  "description": "A Node.js framework",
+  "description": "A platform enabling student to post and search for places for rent",
   "main": "server.js",
   "keywords": [
     "real-time"

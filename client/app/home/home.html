@@ -1,9 +1,6 @@
-<md-content layout-padding>
-    <br/>
+<div layout="column" layout-padding layout-align-gt-sm="center center">
     <form flex name="queryForm">
-
-        <div layout="column" layout-gt-sm="row" layout-align="center left">
-
+        <div layout="column" layout-gt-sm="row" layout-align-gt-sm="center left">
             <div layout="row">
                 <md-input-container class="md-block" flex="60">
                     <label>City</label>
@@ -25,7 +22,7 @@
             </div>
 
 
-            <div layout="column" layout-gt-sm="row">
+            <div layout="column" layout-gt-sm="row" flex>
                 <md-input-container>
                     <label>Start</label>
                     <md-datepicker required md-no-asterisk ng-model="query.moveInDate" name="moveInDate" md-min-date="today"></md-datepicker>
@@ -46,4 +43,4 @@
         </div>
 
     </form>
-</md-content>
+</div>

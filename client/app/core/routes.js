@@ -4,15 +4,16 @@
     angular.module('app')
         .config(function ($stateProvider, $urlRouterProvider) {
 
-            var checkLoggedIn = function ($q, $timeout, $http, $state) {
+            var checkLoggedIn = function ($q, $timeout, $http, $state, sessionService) {
                 var deferred = $q.defer();
 
                 $http.get('/users/loggedin').then(function (user) {
                     // Authenticated
-                    if (user !== '0')
+                    if (user.data !== '0') {
+                        sessionService.set_first_name(user.data.first_name);
                         deferred.resolve();
-                    // Not Authenticated
-                    else {
+                        // Not Authenticated
+                    } else {
                         console.log('not authorized');
                         deferred.reject();
                         $state.go('login');

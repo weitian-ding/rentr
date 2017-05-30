@@ -33,8 +33,12 @@ client/bower_components
 # Debug log from npm
 npm-debug.log
 
-knexfile.js
 
 *.jpg
 
 storage
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+*.pem
