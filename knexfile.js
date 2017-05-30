@@ -7,7 +7,7 @@ module.exports = {
     connection: {
       host: 'aa517ld4daxpe4.c69aue1yiq2j.us-west-2.rds.amazonaws.com',
       database: 'rentr',
-      user: 'root',
+      user: 'Alice',
       password: 'Alice123'
     }
 
