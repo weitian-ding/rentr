@@ -4,35 +4,48 @@
 
     <div flex-gt-sm="60">
 
-        <form name="userForm">
+        <form name="userForm" ng-submit="post()">
             <md-input-container class="md-block">
                 <label>Title</label>
-                <input md-no-asterisk name="short_desc" ng-model="post.short_desc" placeholder="A short description"
+                <input md-no-asterisk name="short_desc" ng-model="form.short_desc" placeholder="A short description"
                        required md-maxlength="50">
             </md-input-container>
 
             <div layout="column" layout-gt-sm="row">
                 <md-input-container>
                     <label>Rent (CAD/month)</label>
-                    <input md-no-asterisk name="rent" type="number" ng-model="post.rent" required>
+                    <input md-no-asterisk name="rent" type="number" ng-model="form.rent" required>
                 </md-input-container>
 
                 <md-input-container>
                     <label>Available from</label>
-                    <md-datepicker md-no-asterisk ng-model="post.date.from" required></md-datepicker>
+                    <md-datepicker md-no-asterisk ng-model="form.date.from" required></md-datepicker>
                 </md-input-container>
 
                 <md-input-container>
                     <label>Until</label>
-                    <md-datepicker md-no-asterisk ng-model="post.date.to" required></md-datepicker>
+                    <md-datepicker md-no-asterisk ng-model="form.date.to" required></md-datepicker>
                 </md-input-container>
             </div>
 
-            <md-input-container class="md-block">
-                <label>Address</label>
-                <input md-no-asterisk ng-model="post.addr.line1" placeholder="Address line 1" required>
-            </md-input-container>
+            <div layout="column" layout-gt-sm="row" layout-wrap>
+                <md-input-container flex-gt-sm="80">
+                    <label>Street Address</label>
+                    <input md-no-asterisk
+                           placeholder="Enter a location"
+                           id="autocomplete"
+                           required>
+                </md-input-container>
 
+                <div layout-sm="row" flex-gt-sm="20">
+                    <md-input-container flex-sm="50">
+                        <label>Unit</label>
+                        <input md-no-asterisk name="unit" ng-model="form.addr.unit">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!--
             <md-input-container md-no-float class="md-block">
                 <input md-no-asterisk ng-model="post.addr.line2" placeholder="Address line 2">
             </md-input-container>
@@ -50,6 +63,7 @@
                 </md-input-container>
 
             </div>
+            -->
 
             <!-- <div layout="column" layout-gt-sm="row" layout-wrap ng-show="photos_to_upload.length">
                 <div flex="100" flex-gt-sm="45" ng-repeat="photo in photos_to_upload">
@@ -68,9 +82,9 @@
 
             <div layout="column"
                  layout-gt-sm="row" layout-align-gt-sm="center"
-                 ng-show="photos_to_upload.length">
+                 ng-show="form.photos_to_upload.length">
                 <div layout="column" flex-gt-sm="45">
-                    <md-card ng-repeat="photo in photos_to_upload" ng-if="$even">
+                    <md-card ng-repeat="photo in form.photos_to_upload" ng-if="$even">
                         <md-card-title>
                             <md-truncate>{{photo.name}}</md-truncate>
                         </md-card-title>
@@ -83,7 +97,7 @@
                     </md-card>
                 </div>
                 <div layout="column" flex-gt-sm="45">
-                    <md-card ng-repeat="photo in photos_to_upload" ng-if="$odd">
+                    <md-card ng-repeat="photo in form.photos_to_upload" ng-if="$odd">
                         <md-card-title>
                             <md-truncate>{{photo.name}}</md-truncate>
                         </md-card-title>
@@ -105,13 +119,13 @@
                            ngf-max-size="5MB">
                     <i class="material-icons md-dark">cloud_upload</i>
                 </md-button>
-                <span>Upload <ng-show ng-show="photos_to_upload.length">more</ng-show> photos</span>
+                <span>Upload <ng-show ng-show="form.photos_to_upload.length">more</ng-show> photos</span>
             </div>
 
             <br/>
 
             <div>
-                <md-button class="md-raised md-primary" ng-click="uploadPhotos(photos_to_upload)">Post</md-button>
+                <md-button class="md-raised md-primary" type="submit">Post</md-button>
             </div>
         </form>
 

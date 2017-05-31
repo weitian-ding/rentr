@@ -8,21 +8,49 @@
     angular.module('app').component('post', {
         templateUrl: 'app/post/post.html',
         controller: function($scope, $mdToast, Upload) {
-            $scope.photos_to_upload = [];
+
+            $scope.form = {};
+            $scope.form.photos_to_upload = [];
+            $scope.form.addr = {};
+
+            var autocomplete = new google.maps.places.Autocomplete(
+                (document.getElementById('autocomplete')),
+                {
+                    types: ['geocode'],
+                    componentRestrictions: {country: ['ca']}
+                });
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                $scope.form.addr.lat = place.geometry.location.lat();
+                $scope.form.addr.lng = place.geometry.location.lng();
+                $scope.$apply();
+            });
+
 
             $scope.$watchCollection('photos_submitted', function() {
                 if ($scope.photos_submitted) {
-                    $scope.photos_to_upload = $scope.photos_to_upload.concat($scope.photos_submitted);
+                    $scope.form.photos_to_upload = $scope.form.photos_to_upload.concat($scope.photos_submitted);
                 }
             });
 
-            $scope.uploadPhotos = function (photos) {
-                if (photos && photos.length) {
+            $scope.post = function () {
+                if ($scope.form.photos_to_upload && $scope.form.photos_to_upload.length) {
                     Upload.upload({
-                        url: 'upload',
+                        url: 'post',
                         arrayKey: '',
                         data: {
-                            photos: photos
+                            photos: $scope.form.photos_to_upload,
+                            short_desc: $scope.form.short_desc,
+                            rent: $scope.form.rent,
+                            availability: {
+                                from: $scope.form.data.from,
+                                to: $scope.form.data.to
+                            },
+                            addr: {
+                                lat: $scope.form.addr.lat,
+                                lng: $scope.form.addr.lng,
+                                unit: $scope.form.addr.unit
+                            }
                         }}).then(function (resp) {
                             console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
                         }, function (resp) {
