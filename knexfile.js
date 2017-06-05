@@ -5,12 +5,21 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      host: 'aa517ld4daxpe4.c69aue1yiq2j.us-west-2.rds.amazonaws.com',
+      host: 'localhost',
       database: 'rentr',
-      user: 'Alice',
+      user: 'root',
       password: 'Alice123'
     }
+  },
 
+  ebs_dev:  {
+  client: 'mysql',
+    connection: {
+      host: 'localhost',
+      database: 'rentr',
+      user: 'root',
+      password: 'Alice123'
+    }
   },
 
   staging: {

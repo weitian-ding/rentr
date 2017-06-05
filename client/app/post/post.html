@@ -11,25 +11,26 @@
                        required md-maxlength="50">
             </md-input-container>
 
-            <div layout="column" layout-gt-sm="row">
-                <md-input-container>
+            <div layout="column" layout-gt-sm="row" layout-wrap>
+                <md-input-container class="md-icon-float" flex-gt-sm="33">
                     <label>Rent (CAD/month)</label>
+                    <md-icon class="material-icons md-dark">attach_money</md-icon>
                     <input md-no-asterisk name="rent" type="number" ng-model="form.rent" required>
                 </md-input-container>
 
-                <md-input-container>
+                <md-input-container flex-gt-sm="33">
                     <label>Available from</label>
                     <md-datepicker md-no-asterisk ng-model="form.date.from" required></md-datepicker>
                 </md-input-container>
 
-                <md-input-container>
+                <md-input-container flex-gt-sm="33">
                     <label>Until</label>
                     <md-datepicker md-no-asterisk ng-model="form.date.to" required></md-datepicker>
                 </md-input-container>
             </div>
 
             <div layout="column" layout-gt-sm="row" layout-wrap>
-                <md-input-container flex-gt-sm="80">
+                <md-input-container flex-gt-sm="66">
                     <label>Street Address</label>
                     <input md-no-asterisk
                            placeholder="Enter a location"
@@ -37,12 +38,12 @@
                            required>
                 </md-input-container>
 
-                <div layout-sm="row" flex-gt-sm="20">
-                    <md-input-container flex-sm="50">
-                        <label>Unit</label>
-                        <input md-no-asterisk name="unit" ng-model="form.addr.unit">
-                    </md-input-container>
-                </div>
+
+                <md-input-container class="md-icon-float" flex-gt-sm="33">
+                    <label>Unit</label>
+                    <md-icon class="material-icons md-dark">home</md-icon>
+                    <input md-no-asterisk name="unit" ng-model="form.addr.unit">
+                </md-input-container>
             </div>
 
             <!--
@@ -124,9 +125,11 @@
 
             <br/>
 
+
             <div>
                 <md-button class="md-raised md-primary" type="submit">Post</md-button>
             </div>
+
         </form>
 
     </div>

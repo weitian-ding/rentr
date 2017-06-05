@@ -12,7 +12,7 @@ var passport = require('./services/passport');
 
 // routers
 var users = require('./routes/users');
-var upload = require('./routes/upload');
+var post = require('./routes/post');
 
 // start configuration
 
@@ -34,7 +34,7 @@ app.use(passport.session());
 
 // start mounting routers
 app.use('/users', users);
-app.use('/upload', upload);
+app.use('/post', post);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

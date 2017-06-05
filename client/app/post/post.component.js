@@ -12,6 +12,7 @@
             $scope.form = {};
             $scope.form.photos_to_upload = [];
             $scope.form.addr = {};
+            $scope.progress = {};
 
             var autocomplete = new google.maps.places.Autocomplete(
                 (document.getElementById('autocomplete')),
@@ -43,8 +44,8 @@
                             short_desc: $scope.form.short_desc,
                             rent: $scope.form.rent,
                             availability: {
-                                from: $scope.form.data.from,
-                                to: $scope.form.data.to
+                                from: $scope.form.date.from,
+                                to: $scope.form.date.to
                             },
                             addr: {
                                 lat: $scope.form.addr.lat,
@@ -57,6 +58,8 @@
                             console.log('Error status: ' + resp.status);
                         }, function (evt) {
                             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                            $scope.progress = evt;
+                            $scope.apply();
                             console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
                         });
                 }
