@@ -4,130 +4,112 @@
 
     <div flex-gt-sm="60">
 
-        <form name="userForm" ng-submit="post()">
+        <form name="postForm" ng-submit="post()">
+
+            <!-- short description -->
             <md-input-container class="md-block">
                 <label>Title</label>
                 <input md-no-asterisk name="short_desc" ng-model="form.short_desc" placeholder="A short description"
                        required md-maxlength="50">
             </md-input-container>
 
+
             <div layout="column" layout-gt-sm="row" layout-wrap>
+                <!-- rent -->
                 <md-input-container class="md-icon-float" flex-gt-sm="33">
                     <label>Rent (CAD/month)</label>
                     <md-icon class="material-icons md-dark">attach_money</md-icon>
                     <input md-no-asterisk name="rent" type="number" ng-model="form.rent" required>
                 </md-input-container>
 
+                <!-- available from -->
                 <md-input-container flex-gt-sm="33">
                     <label>Available from</label>
                     <md-datepicker md-no-asterisk ng-model="form.date.from" required></md-datepicker>
                 </md-input-container>
 
+                <!-- available until -->
                 <md-input-container flex-gt-sm="33">
                     <label>Until</label>
                     <md-datepicker md-no-asterisk ng-model="form.date.to" required></md-datepicker>
                 </md-input-container>
             </div>
 
-            <div layout="column" layout-gt-sm="row" layout-wrap>
+            <div layout="column" class="md-icon-float" layout-gt-sm="row"  layout-wrap>
+                <!-- street address -->
                 <md-input-container flex-gt-sm="66">
                     <label>Street Address</label>
+                    <md-icon class="material-icons md-dark">home</md-icon>
                     <input md-no-asterisk
                            placeholder="Enter a location"
                            id="autocomplete"
                            required>
                 </md-input-container>
 
-
-                <md-input-container class="md-icon-float" flex-gt-sm="33">
+                <!-- unit number -->
+                <md-input-container flex-gt-sm="33">
                     <label>Unit</label>
-                    <md-icon class="material-icons md-dark">home</md-icon>
                     <input md-no-asterisk name="unit" ng-model="form.addr.unit">
                 </md-input-container>
             </div>
 
-            <!--
-            <md-input-container md-no-float class="md-block">
-                <input md-no-asterisk ng-model="post.addr.line2" placeholder="Address line 2">
-            </md-input-container>
+            <!-- photo drop box -->
+            <div layout-gt-sm="row" layout-align-gt-sm="center">
+                <div flex="100" flex-offset-gt-sm="10" flex-gt-sm="60"
+                     ngf-select
+                     ngf-drop
+                     ng-model="form.photos"
+                     class="drop-box"
+                     ngf-drag-over-class="'dragover'"
+                     ngf-multiple="true"
+                     ngf-pattern="'image/*'"
+                     ngf-accept="'image/*'"
+                     ngf-keep="'distinct'"
+                     ngf-resize="{quality: .8,
+                                  type: 'image/jpeg',
+                                  ratio: '1.61:1',
+                                  centerCrop: true,
+                                  restoreExif: false}">
 
-
-            <div layout-gt-sm="row">
-                <md-input-container class="md-block" flex-gt-sm="30">
-                    <label>City</label>
-                    <input md-no-asterisk ng-model="post.addr.city" required>
-                </md-input-container>
-
-                <md-input-container class="md-block" flex-gt-sm="30">
-                    <label>Postal Code</label>
-                    <input md-no-asterisk name="post_code" ng-model="post.addr.post_code" required md-maxlength="6">
-                </md-input-container>
-
-            </div>
-            -->
-
-            <!-- <div layout="column" layout-gt-sm="row" layout-wrap ng-show="photos_to_upload.length">
-                <div flex="100" flex-gt-sm="45" ng-repeat="photo in photos_to_upload">
-                    <md-card >
-                        <md-card-title>
-                            <md-truncate>{{photo.name}}</md-truncate>
-                        </md-card-title>
-
-                        <md-card-content layout="column" layout-align="top center">
-                            <img class="md-card-image"
-                                 style="max-width: 100%" ngf-thumbnail="photo" />
-                        </md-card-content>
-                    </md-card>
+                    <span>
+                        <md-icon class="material-icons md-dark">cloud_upload</md-icon>
+                        &nbsp select or drop <ng-show ng-show="form.photos_to_upload.length">more</ng-show> photos
+                    </span>
                 </div>
-            </div> -->
+            </div>
 
-            <div layout="column"
-                 layout-gt-sm="row" layout-align-gt-sm="center"
-                 ng-show="form.photos_to_upload.length">
-                <div layout="column" flex-gt-sm="45">
-                    <md-card ng-repeat="photo in form.photos_to_upload" ng-if="$even">
-                        <md-card-title>
-                            <md-truncate>{{photo.name}}</md-truncate>
-                        </md-card-title>
+            <!-- photo preview -->
+            <div ng-show="form.photos.length">
+                <span>Photo preview: </span>
+                <div layout="row"
+                     layout-wrap>
 
-                        <md-card-content>
+                    <md-whiteframe class="md-whiteframe-1dp"
+                                   flex-gt-sm="30" flex="45"
+                                   layout-margin
+                                   layout="column" layout-align="start start"
+                                   ng-repeat="photo in form.photos">
+                        <div layout="row"> <!-- TODO fix alignment -->
+                            <span style="margin: auto" md-truncate>{{photo.name}}</span>
+                            <md-button class="md-icon-button" aria-label="Settings" ng-click="delete_photo(photo)">
+                                <md-icon class="material-icons md-dark">delete</md-icon>
+                            </md-button>
+                        </div>
+                        <div>
                             <img class="md-card-image"
                                  style="max-width: 100%"
-                                 ngf-src="photo" />
-                        </md-card-content>
-                    </md-card>
-                </div>
-                <div layout="column" flex-gt-sm="45">
-                    <md-card ng-repeat="photo in form.photos_to_upload" ng-if="$odd">
-                        <md-card-title>
-                            <md-truncate>{{photo.name}}</md-truncate>
-                        </md-card-title>
-
-                        <md-card-content>
-                            <img class="md-card-image"
-                                 style="max-width: 100%"
-                                 ngf-src="photo" />
-                        </md-card-content>
-                    </md-card>
+                                 ngf-src="photo"/>
+                        </div>
+                    </md-whiteframe>
                 </div>
             </div>
 
-            <div>
-                <md-button class="md-icon-button md-raised"
-                           ngf-select ng-model="photos_submitted" ngf-multiple="true"
-                           ngf-pattern="'image/*'"
-                           ngf-accept="'image/*'"
-                           ngf-max-size="5MB">
-                    <i class="material-icons md-dark">cloud_upload</i>
-                </md-button>
-                <span>Upload <ng-show ng-show="form.photos_to_upload.length">more</ng-show> photos</span>
-            </div>
 
             <br/>
 
-
+            <!-- submit button -->
             <div>
-                <md-button class="md-raised md-primary" type="submit">Post</md-button>
+                <md-button class="md-raised md-primary" type="submit" ng-click="post()">Post</md-button>
             </div>
 
         </form>

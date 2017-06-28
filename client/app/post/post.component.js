@@ -9,38 +9,20 @@
         templateUrl: 'app/post/post.html',
         controller: function($scope, $mdToast, Upload) {
 
-            $scope.form = {};
-            $scope.form.photos_to_upload = [];
-            $scope.form.addr = {};
+            // initilize form object
+            $scope.form = {
+                addr: {}
+            };
             $scope.progress = {};
 
-            var autocomplete = new google.maps.places.Autocomplete(
-                (document.getElementById('autocomplete')),
-                {
-                    types: ['geocode'],
-                    componentRestrictions: {country: ['ca']}
-                });
-            autocomplete.addListener('place_changed', function() {
-                var place = autocomplete.getPlace();
-                $scope.form.addr.lat = place.geometry.location.lat();
-                $scope.form.addr.lng = place.geometry.location.lng();
-                $scope.$apply();
-            });
-
-
-            $scope.$watchCollection('photos_submitted', function() {
-                if ($scope.photos_submitted) {
-                    $scope.form.photos_to_upload = $scope.form.photos_to_upload.concat($scope.photos_submitted);
-                }
-            });
-
+            // post form
             $scope.post = function () {
-                if ($scope.form.photos_to_upload && $scope.form.photos_to_upload.length) {
+                if ($scope.form.photos && $scope.form.photos.length) {
                     Upload.upload({
                         url: 'post',
                         arrayKey: '',
                         data: {
-                            photos: $scope.form.photos_to_upload,
+                            photos: $scope.form.photos,
                             short_desc: $scope.form.short_desc,
                             rent: $scope.form.rent,
                             availability: {
@@ -57,13 +39,32 @@
                         }, function (resp) {
                             console.log('Error status: ' + resp.status);
                         }, function (evt) {
+                            console.log(evt);
                             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                            $scope.progress = evt;
-                            $scope.apply();
-                            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                            // console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
                         });
                 }
-            }
+            };
+
+            // delete photo from form.photos
+            $scope.delete_photo = function(photo) {
+                var index = $scope.form.photos.indexOf(photo);
+                $scope.form.photos.splice(index, 1);
+            };
+
+            // google address auto complete
+            var autocomplete = new google.maps.places.Autocomplete(
+                (document.getElementById('autocomplete')),
+                {
+                    types: ['geocode'],
+                    componentRestrictions: {country: ['ca']}
+                });
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                $scope.form.addr.lat = place.geometry.location.lat();
+                $scope.form.addr.lng = place.geometry.location.lng();
+                $scope.$apply();
+            });
         }
     })
 })();
