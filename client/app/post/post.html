@@ -89,8 +89,8 @@
                                    layout-margin
                                    layout="column" layout-align="start start"
                                    ng-repeat="photo in form.photos">
-                        <div layout="row"> <!-- TODO fix alignment -->
-                            <span style="margin: auto" md-truncate>{{photo.name}}</span>
+                        <div layout="row" layout-align="space-between start"> <!-- TODO fix alignment -->
+                            <span flex="80" style="margin: auto" md-truncate>{{photo.name}}</span>
                             <md-button class="md-icon-button" aria-label="Settings" ng-click="delete_photo(photo)">
                                 <md-icon class="material-icons md-dark">delete</md-icon>
                             </md-button>
@@ -109,7 +109,7 @@
 
             <!-- submit button -->
             <div>
-                <md-button class="md-raised md-primary" type="submit" ng-click="post()">Post</md-button>
+                <md-button class="md-raised md-primary" type="submit">Post</md-button>
             </div>
 
         </form>
