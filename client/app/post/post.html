@@ -6,12 +6,46 @@
 
         <form name="propertyForm" ng-submit="post()">
 
+            <!-- test
+            <md-input-container>
+                <label>Ok</label>
+                <input type="text" name="findByCaId2"
+                       ng-model="findByCaId2"
+                       ng-focus="$event.target.select()"
+                       required="" ng-pattern="/^123$/">
+
+                <div ng-messages="propertyForm.findByCaId2.$error">
+                    <div ng-message="required">Campo obrigatório.</div>
+                    <div ng-message="pattern">Valor inválido para o campo CA ID.</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container>
+                <input
+                        required
+                        md-no-asterisk name="test" ng-model="form.aaaa" placeholder="test">
+                <div ng-messages="propertyForm.test.$error" md-auto-hide="false">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
+
+            <div>
+                propertyForm.test.$error: {{propertyForm.test.$error}}
+                propertyForm.short_desc.$error: {{propertyForm.short_desc.$error}}
+            </div>
+            -->
+
+            <!-- TODO make ngMessages work -->
             <!-- short description -->
             <md-input-container class="md-block">
                 <label>Title</label>
-                <input md-no-asterisk name="short_desc" ng-model="form.short_desc" placeholder="A short description"
-                       required md-maxlength="50">
-                <div ng-messages="propertyForm.short_desc.$error" md-auto-hide="false">
+                <input required
+                       md-no-asterisk
+                       name="short_desc"
+                       ng-model="form.short_desc"
+                       placeholder="A short description"
+                       md-maxlength="50">
+                <div ng-messages="propertyForm.short_desc.$error" ng-show="propertyForm.short_desc.$touched">
                     <div ng-message="required">This is required.</div>
                 </div>
             </md-input-container>
@@ -84,7 +118,7 @@
 
                     <span>
                         <md-icon class="material-icons md-dark">cloud_upload</md-icon>
-                        &nbsp select or drop <ng-show ng-show="form.photos_to_upload.length">more</ng-show> photos
+                        &nbsp select or drop <ng-show ng-show="form.photos.length">more</ng-show> photos
                     </span>
                 </div>
             </div>
@@ -98,9 +132,11 @@
                     <md-whiteframe class="md-whiteframe-1dp"
                                    flex-gt-sm="30" flex="45"
                                    layout-margin
-                                   layout="column" layout-align="start strech"
-                                   ng-repeat="photo in form.photos">
-                        <div layout="row"> <!-- TODO fix alignment -->
+                                   layout="column"
+                                   layout-align="start strech"
+                                   ng-repeat="photo in form.photos"
+                                   ng-cloak>
+                        <div layout="row" class="photo-thumbnail-title">
                             <div flex="70" style="margin: auto" md-truncate>
                                {{photo.name}}
                             </div>

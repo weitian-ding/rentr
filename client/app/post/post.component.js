@@ -9,13 +9,15 @@
         templateUrl: 'app/post/post.html',
         controller: function($scope, $mdToast, Upload) {
 
-            // initilize form object
+            // initialize form object
             $scope.form = {
                 addr: {}
             };
-            $scope.progress = {};
 
-            // post form
+            // min date for datepicker
+            $scope.today = new Date();
+
+            // post a new property
             $scope.post = function () {
                 if ($scope.form.photos && $scope.form.photos.length) {
                     Upload.upload({
