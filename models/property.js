@@ -8,6 +8,12 @@ var Property = bookshelf.Model.extend({
     tableName: 'property',
     user: function() {
         return this.belongsTo('User');
+    },
+    photos: function() {
+        return this.hasMany('Photo');
+    },
+    address: function() {
+        return this.hasOne('address');
     }
 });
 

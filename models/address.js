@@ -8,6 +8,9 @@ var Address = bookshelf.Model.extend({
     tableName: 'address',
     city: function () {
         return this.belongsTo('City');
+    },
+    property: function() {
+        return this.belongsTo('property');
     }
 });
 
