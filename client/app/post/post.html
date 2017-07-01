@@ -4,15 +4,17 @@
 
     <div flex-gt-sm="60">
 
-        <form name="postForm" ng-submit="post()">
+        <form name="propertyForm" ng-submit="post()">
 
             <!-- short description -->
             <md-input-container class="md-block">
                 <label>Title</label>
                 <input md-no-asterisk name="short_desc" ng-model="form.short_desc" placeholder="A short description"
                        required md-maxlength="50">
+                <div ng-messages="propertyForm.short_desc.$error" md-auto-hide="false">
+                    <div ng-message="required">This is required.</div>
+                </div>
             </md-input-container>
-
 
             <div layout="column" layout-gt-sm="row" layout-wrap>
                 <!-- rent -->
@@ -25,13 +27,13 @@
                 <!-- available from -->
                 <md-input-container flex-gt-sm="33">
                     <label>Available from</label>
-                    <md-datepicker md-no-asterisk ng-model="form.date.from" required></md-datepicker>
+                    <md-datepicker md-no-asterisk ng-model="form.date.from" md-min-date="today" required></md-datepicker>
                 </md-input-container>
 
                 <!-- available until -->
                 <md-input-container flex-gt-sm="33">
                     <label>Until</label>
-                    <md-datepicker md-no-asterisk ng-model="form.date.to" required></md-datepicker>
+                    <md-datepicker md-no-asterisk ng-model="form.date.to" md-min-date="form.date.from" required></md-datepicker>
                 </md-input-container>
             </div>
 
@@ -53,9 +55,18 @@
                 </md-input-container>
             </div>
 
+            <!-- description -->
+            <md-input-container class="md-block">
+                <label>Description</label>
+                <textarea required md-no-asterisk
+                          ng-model="form.desc"
+                          md-maxlength="150" rows="5"
+                          md-select-on-focus></textarea>
+            </md-input-container>
+
             <!-- photo drop box -->
             <div layout-gt-sm="row" layout-align-gt-sm="center">
-                <div flex="100" flex-offset-gt-sm="10" flex-gt-sm="60"
+                <div flex="100"
                      ngf-select
                      ngf-drop
                      ng-model="form.photos"
@@ -87,13 +98,17 @@
                     <md-whiteframe class="md-whiteframe-1dp"
                                    flex-gt-sm="30" flex="45"
                                    layout-margin
-                                   layout="column" layout-align="start start"
+                                   layout="column" layout-align="start strech"
                                    ng-repeat="photo in form.photos">
-                        <div layout="row" layout-align="space-between start"> <!-- TODO fix alignment -->
-                            <span flex="80" style="margin: auto" md-truncate>{{photo.name}}</span>
-                            <md-button class="md-icon-button" aria-label="Settings" ng-click="delete_photo(photo)">
-                                <md-icon class="material-icons md-dark">delete</md-icon>
-                            </md-button>
+                        <div layout="row"> <!-- TODO fix alignment -->
+                            <div flex="70" style="margin: auto" md-truncate>
+                               {{photo.name}}
+                            </div>
+                            <div flex="25">
+                                <md-button class="md-icon-button" aria-label="Settings" ng-click="delete_photo(photo)">
+                                    <md-icon class="material-icons md-dark">delete</md-icon>
+                                </md-button>
+                            </div>
                         </div>
                         <div>
                             <img class="md-card-image"
@@ -106,9 +121,10 @@
 
 
             <br/>
+            <br/>
 
             <!-- submit button -->
-            <div>
+            <div layout="row" layout-align="center">
                 <md-button class="md-raised md-primary" type="submit">Post</md-button>
             </div>
 
