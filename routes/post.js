@@ -9,48 +9,61 @@ var multer = require('../services/multer');
 var path = require('path');
 var models = require('../models');
 var bookshelf = require('../services/bookshelf');
+var Promise = require('bluebird');
 
 
 router.post('/', multer.array('photos', 12), function (req, res, next) {
+
     // the transaction to post a new property
     var post_property_transac = function(t) {
-        // create a new entry in address table
-        return new models.Address({
-            lat: req.body.addr.lat,
-            lng: req.body.addr.lng,
-            city_id: 1  // Toronto
-        })
-            .save(null, { transaction: t })
-            .then(function (address) {
-                // expiry date of a post is two weeks from it is created
-                var expiry_date = new Date();
-                expiry_date.setDate(expiry_date.getDate() + 14);
+        // expiry date of a post is two weeks from it is created
+        var expiry_date = new Date();
+        expiry_date.setDate(expiry_date.getDate() + 14);
 
-                // create a new entry in property table
-                return new models.Property({
-                    create_datetime: new Date(),
-                    expiry_datetime: expiry_date,
-                    availability_start_date: new Date(req.body.availability.from),
-                    availability_end_date: new Date(req.body.availability.to),
-                    address_id: address.id,
-                    property_type_id: 2, // apartment
-                    owner: req.user.id
+        // create a new entry in property table
+        return new models.Property({
+            short_desc: req.body.short_desc,
+            create_datetime: new Date(),
+            expiry_datetime: expiry_date,
+            availability_start_date: new Date(req.body.availability.from),
+            availability_end_date: new Date(req.body.availability.to),
+            property_type_id: 2, // apartment TODO should come from req.body
+            owner: req.user.id
+        })
+            .save(null, {transaction: t})
+            .tap(function(property) {
+
+                // create a new entry in address table
+                return new models.Address({
+                    unit: req.body.unit,
+                    lat: req.body.addr.lat,
+                    lng: req.body.addr.lng,
+                    city_id: 1  // Toronto TODO should come from req.body
                 })
-                    .save(null, {transaction: t})
+                    .save({ property_id: property.id }, { transaction: t })
+            })
+            .tap(function(property) {
+
+                // save each photo path to photo table
+                var photo_promises = req.files.map(function (photo) {
+                    return new models.Photo({
+                        url: photo.path
+                    }).save({ property_id: property.id }, { transaction: t });
+                });
+                return Promise.all(photo_promises);
             })
     };
 
+    // execute the transaction
     bookshelf.transaction(post_property_transac)
         .then(function(property) {
-            res.send(property.id);
+            res.send({ property_id: property.id });  // returns property id
         })
         .catch(function(err) {
             console.log(err);
-            res.sendStatus(500);
-            res.end();
+            res.sendStatus(500); // internal server error
         });
 });
-
 
 module.exports = router;
 
