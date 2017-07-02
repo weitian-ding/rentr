@@ -11,8 +11,8 @@ var models = require('../models');
 var bookshelf = require('../services/bookshelf');
 var Promise = require('bluebird');
 
-
-router.post('/', multer.array('photos', 12), function (req, res, next) {
+// create a new property
+router.post('/create', multer.array('photos', 12), function (req, res, next) {
 
     // the transaction to post a new property
     var post_property_transac = function(t) {

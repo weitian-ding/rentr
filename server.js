@@ -12,7 +12,7 @@ var passport = require('./services/passport');
 
 // routers
 var users = require('./routes/users');
-var post = require('./routes/post');
+var properties = require('./routes/properties');
 
 // start configuration
 
@@ -34,7 +34,8 @@ app.use(passport.session());
 
 // start mounting routers
 app.use('/users', users);
-app.use('/post', post);
+app.use('/api', passport.authMiddleware);  // authentication
+app.use('/api/properties', properties);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
