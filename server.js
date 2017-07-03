@@ -32,9 +32,12 @@ app.use(passport.session());
 
 // end configuration
 
+// photos router TODO use S3
+app.use(express.static(path.join(__dirname, 'storage')));
+
 // start mounting routers
 app.use('/users', users);
-app.use('/api', passport.authMiddleware);  // authentication
+// app.use('/api', passport.authMiddleware);  // authentication
 app.use('/api/properties', properties);
 
 // catch 404 and forward to error handler

@@ -65,5 +65,27 @@ router.post('/create', multer.array('photos', 12), function (req, res, next) {
         });
 });
 
+
+// find properties
+router.get('/fetch', function(req, res, next) {
+    models.Property
+        .query(function (qb) {
+            qb.where('expiry_datetime', '>=', new Date()); // return unexpired posts
+        })
+        .orderBy('create_datetime')
+        .fetchPage({
+            pageSize: 10,
+            page: 1, // TODO should come from req
+            withRelated: ['address', 'photos']
+        })
+        .then(function(results) {
+            res.send(results);
+        })
+        .catch(function(error) {
+            console.log(error);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;
 
