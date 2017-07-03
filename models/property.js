@@ -13,7 +13,7 @@ var Property = bookshelf.Model.extend({
         return this.hasMany('Photo');
     },
     address: function() {
-        return this.hasOne('address');
+        return this.hasOne('Address');
     }
 });
 
