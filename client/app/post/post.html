@@ -4,7 +4,7 @@
 
     <div flex-gt-sm="60">
 
-        <form name="propertyForm" ng-submit="post()">
+        <form name="propertyForm" ng-submit="create_property()">
 
             <!-- test
             <md-input-container>
@@ -41,8 +41,9 @@
                 <label>Title</label>
                 <input required
                        md-no-asterisk
+                       ng-disabled="form_on_submit"
                        name="short_desc"
-                       ng-model="form.short_desc"
+                       ng-model="property.short_desc"
                        placeholder="A short description"
                        md-maxlength="50">
                 <div ng-messages="propertyForm.short_desc.$error" ng-show="propertyForm.short_desc.$touched">
@@ -55,19 +56,28 @@
                 <md-input-container class="md-icon-float" flex-gt-sm="33">
                     <label>Rent (CAD/month)</label>
                     <md-icon class="material-icons md-dark">attach_money</md-icon>
-                    <input md-no-asterisk name="rent" type="number" ng-model="form.rent" required>
+                    <input md-no-asterisk
+                           name="rent"
+                           type="number"
+                           ng-model="property.rent"
+                           ng-disabled="form_on_submit"
+                           required>
                 </md-input-container>
 
                 <!-- available from -->
                 <md-input-container flex-gt-sm="33">
                     <label>Available from</label>
-                    <md-datepicker md-no-asterisk ng-model="form.date.from" md-min-date="today" required></md-datepicker>
+                    <md-datepicker md-no-asterisk
+                                   ng-model="property.date.from"
+                                   md-min-date="today"
+                                   ng-disabled="form_on_submit"
+                                   required></md-datepicker>
                 </md-input-container>
 
                 <!-- available until -->
                 <md-input-container flex-gt-sm="33">
                     <label>Until</label>
-                    <md-datepicker md-no-asterisk ng-model="form.date.to" md-min-date="form.date.from" required></md-datepicker>
+                    <md-datepicker md-no-asterisk ng-disabled="form_on_submit" ng-model="property.date.to" md-min-date="property.date.from" required></md-datepicker>
                 </md-input-container>
             </div>
 
@@ -77,6 +87,7 @@
                     <label>Street Address</label>
                     <md-icon class="material-icons md-dark">home</md-icon>
                     <input md-no-asterisk
+                           ng-disabled="form_on_submit"
                            placeholder="Enter a location"
                            id="autocomplete"
                            required>
@@ -85,15 +96,20 @@
                 <!-- unit number -->
                 <md-input-container flex-gt-sm="33">
                     <label>Unit</label>
-                    <input md-no-asterisk name="unit" ng-model="form.addr.unit">
+                    <input md-no-asterisk
+                           name="unit"
+                           ng-disabled="form_on_submit"
+                           ng-model="property.addr.unit">
                 </md-input-container>
             </div>
 
             <!-- description -->
             <md-input-container class="md-block">
                 <label>Description</label>
-                <textarea required md-no-asterisk
-                          ng-model="form.desc"
+                <textarea required
+                          md-no-asterisk
+                          ng-disabled="form_on_submit"
+                          ng-model="property.desc"
                           md-maxlength="150" rows="5"
                           md-select-on-focus></textarea>
             </md-input-container>
@@ -103,7 +119,8 @@
                 <div flex="100"
                      ngf-select
                      ngf-drop
-                     ng-model="form.photos"
+                     ng-disabled="form_on_submit"
+                     ng-model="property.photos"
                      class="drop-box"
                      ngf-drag-over-class="'dragover'"
                      ngf-multiple="true"
@@ -118,13 +135,13 @@
 
                     <span>
                         <md-icon class="material-icons md-dark">cloud_upload</md-icon>
-                        &nbsp select or drop <ng-show ng-show="form.photos.length">more</ng-show> photos
+                        &nbsp select or drop <ng-show ng-show="property.photos.length">more</ng-show> photos
                     </span>
                 </div>
             </div>
 
             <!-- photo preview -->
-            <div ng-show="form.photos.length">
+            <div ng-show="property.photos.length">
                 <span>Photo preview: </span>
                 <div layout="row"
                      layout-wrap>
@@ -134,14 +151,17 @@
                                    layout-margin
                                    layout="column"
                                    layout-align="start strech"
-                                   ng-repeat="photo in form.photos"
+                                   ng-repeat="photo in property.photos"
                                    ng-cloak>
                         <div layout="row" class="photo-thumbnail-title">
                             <div flex="70" style="margin: auto" md-truncate>
                                {{photo.name}}
                             </div>
                             <div flex="25">
-                                <md-button class="md-icon-button" aria-label="Settings" ng-click="delete_photo(photo)">
+                                <md-button class="md-icon-button"
+                                           aria-label="Delete"
+                                           ng-click="delete_photo(photo)"
+                                           ng-disabled="form_on_submit">
                                     <md-icon class="material-icons md-dark">delete</md-icon>
                                 </md-button>
                             </div>
@@ -160,8 +180,9 @@
             <br/>
 
             <!-- submit button -->
-            <div layout="row" layout-align="center">
-                <md-button class="md-raised md-primary" type="submit">Post</md-button>
+            <div layout="column" layout-align="start center" layout-margin>
+                <md-button class="md-raised md-primary" type="submit" ng-disabled="form_on_submit">Post</md-button>
+                <md-progress-linear ng-disabled="!form_on_submit" md-mode="indeterminate"></md-progress-linear>
             </div>
 
         </form>

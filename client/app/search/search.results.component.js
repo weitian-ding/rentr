@@ -7,10 +7,11 @@
     'use strict';
 
     angular.module('app').component('search.results', {
+        bindings: { properties: '<' },
         templateUrl: 'app/search/results.html',
         controller: function($scope) {
-
-
+            console.log(this.properties);
+            /*
             $scope.properties = [];
             for (var i = 0; i < 20; i++) {
                 var sample_property = {
@@ -28,6 +29,7 @@
                 };
                 $scope.properties.push(sample_property)
             }
+            */
         }
     })
 })();

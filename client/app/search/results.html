@@ -4,32 +4,19 @@
     </div>
 </md-toolbar>
 
-<md-subheader class="md-primary">20 properties found</md-subheader>
+<md-subheader class="md-primary">{{$ctrl.properties.data.length}} properties found</md-subheader>
 
 
-
-<!--
-<md-list layout-padding>
-    <md-list-item class="md-3-line" ng-repeat="property in properties" ng-click="null">
-        <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
-        <div class="md-list-item-text" layout="column">
-            <h3>{{ property.addr.line1 }}</h3>
-            <h4>{{ property.addr.city }}, {{property.addr.post_code}}</h4>
-            <p>${{ property.rent }}/month</p>
-        </div>
-    </md-list-item>
-
-</md-list> -->
-<div layout="column" layout-gt-sm="row" layout-wrap layout-align-gt-sm="center top">
-    <md-card ng-repeat="property in properties" flex-gt-sm="45">
-        <img ng-src="images/sample_room.jpg" class="md-card-image" alt="No Image">
+<div flex-offset-gt-sm="5" layout="column" layout-gt-sm="row" layout-wrap layout-padding layout-align-gt-sm="start top">
+    <md-card ng-repeat="property in $ctrl.properties.data" flex-gt-sm="45">
+        <img ng-src="{{property.photos[0].url.substring(7)}}" class="md-card-image" alt="No Image">
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">{{property.title}}</span>
+                <span class="md-headline">{{property.short_desc}}</span>
             </md-card-title-text>
         </md-card-title>
         <md-card-content>
-           <p>${{ property.rent }}/month, {{property.capacity}} room, {{property.type}}</p>
+           <p>${{ property.rent }}/month, {{property.capacity}} room, apartment</p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
             <md-button>Action 1</md-button>

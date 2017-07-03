@@ -53,7 +53,12 @@
 
                 .state('home.search', {
                     url: '/search/results',
-                    component: 'search.results'
+                    component: 'search.results',
+                    resolve: {
+                        properties: function(propertyService) {
+                            return propertyService.fetch_properties();
+                        }
+                    }
                 })
 
                 .state('home.post', {
