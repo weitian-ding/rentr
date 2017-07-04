@@ -9,8 +9,9 @@
     angular.module('app').component('search.results', {
         bindings: { properties: '<' },
         templateUrl: 'app/search/results.html',
-        controller: function($scope) {
+        controller: function($scope, $animate) {
             console.log(this.properties);
+
             /*
             $scope.properties = [];
             for (var i = 0; i < 20; i++) {

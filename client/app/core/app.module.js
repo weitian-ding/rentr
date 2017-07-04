@@ -16,6 +16,8 @@
         'ngStorage',
         'ui.router',
         'ngFileUpload',
+        'jkAngularCarousel',
+        //'ui.bootstrap',
 
         // Custom modules
         'app.login'
