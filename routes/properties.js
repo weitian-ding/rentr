@@ -72,7 +72,7 @@ router.get('/fetch', function(req, res, next) {
         .query(function (qb) {
             qb.where('expiry_datetime', '>=', new Date()); // return unexpired posts
         })
-        .orderBy('create_datetime')
+        .orderBy('create_datetime', 'DESC')
         .fetchPage({
             pageSize: 10,
             page: 1, // TODO should come from req

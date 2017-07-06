@@ -179,10 +179,21 @@
             <br/>
             <br/>
 
+            <md-input-container class="md-block">
+                <div ng-messages="propertyForm.short_desc.$error" md-auto-hide="false">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
+
             <!-- submit button -->
             <div layout="column" layout-align="start center" layout-margin>
-                <md-button class="md-raised md-primary" type="submit" ng-disabled="form_on_submit">Post</md-button>
-                <md-progress-linear ng-disabled="!form_on_submit" md-mode="indeterminate"></md-progress-linear>
+                <md-button
+                        class="md-raised md-primary"
+                        type="submit"
+                        ng-disabled="form_on_submit"
+                        ng-hide="form_on_submit">Post</md-button>
+                <md-progress-linear ng-disabled="!form_on_submit" md-mode="indeterminate">
+                </md-progress-linear>
             </div>
 
         </form>
