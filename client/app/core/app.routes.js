@@ -62,8 +62,8 @@
                 })
 
                 .state('home.post', {
-                    url: '/post',
-                    component: 'post'
+                    url: '/create/property',
+                    component: 'create.property'
                 }
                 );
         });
