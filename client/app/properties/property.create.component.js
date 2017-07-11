@@ -5,8 +5,8 @@
 (function() {
     'use strict';
 
-    angular.module('app').component('create.property', {
-        templateUrl: 'app/properties/create.property.html',
+    angular.module('app').component('property.create', {
+        templateUrl: 'app/properties/property.create.html',
         controller: function($scope, $mdToast, Upload) {
 
             // initialize property object

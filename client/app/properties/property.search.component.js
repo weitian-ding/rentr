@@ -5,7 +5,7 @@
   'use strict';
 
     angular.module('app').component('home', {
-        templateUrl: 'app/home/home.html',
+        templateUrl: 'app/properties/property.search.html',
         controller: function($scope) {
             $scope.query = {};
             $scope.cities = [{city: 'Waterloo', state: 'ON'}, {city :'Toronto', state: 'ON'}];

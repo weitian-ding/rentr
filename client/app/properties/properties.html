@@ -13,13 +13,13 @@
         <md-tab-body>
             <div flex-offset-gt-sm="5" layout="column" layout-gt-sm="row" layout-wrap layout-align-gt-sm="start top">
 
-                <md-card ng-repeat="property in $ctrl.properties.data"
+                <md-card  ng-repeat="property in $ctrl.properties.data"
                          flex-gt-sm="45">
 
                     <div layout="column"
                          layout-align="start center">
                         <jk-carousel data="property.photos"
-                                     item-template-url="'app/search/photo-slide-template.html'"
+                                     item-template-url="'app/properties/photo-slide-template.html'"
                                      max-width="800" max-height="500">
                         </jk-carousel>
                     </div>

@@ -8,7 +8,7 @@
 
     angular.module('app').component('search.results', {
         bindings: { properties: '<' },
-        templateUrl: 'app/search/results.html',
+        templateUrl: 'app/properties/properties.html',
         controller: function($scope, $animate) {
             console.log(this.properties);
 

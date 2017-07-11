@@ -27,14 +27,10 @@
 
 
             $stateProvider
-                .state('landing', {
-                    url: '/landing',
-                    templateUrl: 'app/landing/landing.html'
-                })
 
                 .state('login', {
                     url: "/login",
-                    templateUrl: 'app/login/login.html'
+                    templateUrl: 'app/users/user.login.html'
                 })
 
                 .state('home', {
@@ -62,8 +58,8 @@
                 })
 
                 .state('home.post', {
-                    url: '/create/property',
-                    component: 'create.property'
+                    url: '/property/create',
+                    component: 'property.create'
                 }
                 );
         });
