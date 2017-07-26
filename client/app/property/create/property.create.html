@@ -4,36 +4,7 @@
 
     <div flex-gt-sm="60">
 
-        <form name="propertyForm" ng-submit="create_property()">
-
-            <!-- test
-            <md-input-container>
-                <label>Ok</label>
-                <input type="text" name="findByCaId2"
-                       ng-model="findByCaId2"
-                       ng-focus="$event.target.select()"
-                       required="" ng-pattern="/^123$/">
-
-                <div ng-messages="propertyForm.findByCaId2.$error">
-                    <div ng-message="required">Campo obrigatório.</div>
-                    <div ng-message="pattern">Valor inválido para o campo CA ID.</div>
-                </div>
-            </md-input-container>
-
-            <md-input-container>
-                <input
-                        required
-                        md-no-asterisk name="test" ng-model="form.aaaa" placeholder="test">
-                <div ng-messages="propertyForm.test.$error" md-auto-hide="false">
-                    <div ng-message="required">This is required.</div>
-                </div>
-            </md-input-container>
-
-            <div>
-                propertyForm.test.$error: {{propertyForm.test.$error}}
-                propertyForm.short_desc.$error: {{propertyForm.short_desc.$error}}
-            </div>
-            -->
+        <form name="propertyForm" ng-submit="$ctrl.create_property($ctrl.property)">
 
             <!-- TODO make ngMessages work -->
             <!-- short description -->
@@ -43,10 +14,11 @@
                        md-no-asterisk
                        ng-disabled="form_on_submit"
                        name="short_desc"
-                       ng-model="property.short_desc"
+                       ng-model="$ctrl.property.short_desc"
                        placeholder="A short description"
                        md-maxlength="50">
-                <div ng-messages="propertyForm.short_desc.$error" ng-show="propertyForm.short_desc.$touched">
+                <div ng-messages="propertyForm.short_desc.$error"
+                     ng-show="propertyForm.short_desc.$touched">
                     <div ng-message="required">This is required.</div>
                 </div>
             </md-input-container>
@@ -59,7 +31,7 @@
                     <input md-no-asterisk
                            name="rent"
                            type="number"
-                           ng-model="property.rent"
+                           ng-model="$ctrl.property.rent"
                            ng-disabled="form_on_submit"
                            required>
                 </md-input-container>
@@ -68,8 +40,8 @@
                 <md-input-container flex-gt-sm="33">
                     <label>Available from</label>
                     <md-datepicker md-no-asterisk
-                                   ng-model="property.date.from"
-                                   md-min-date="today"
+                                   ng-model="$ctrl.property.date.from"
+                                   md-min-date="$ctrl.today"
                                    ng-disabled="form_on_submit"
                                    required></md-datepicker>
                 </md-input-container>
@@ -77,7 +49,13 @@
                 <!-- available until -->
                 <md-input-container flex-gt-sm="33">
                     <label>Until</label>
-                    <md-datepicker md-no-asterisk ng-disabled="form_on_submit" ng-model="property.date.to" md-min-date="property.date.from" required></md-datepicker>
+                    <md-datepicker md-no-asterisk
+                                   ng-disabled="form_on_submit"
+                                   ng-model="$ctrl.property.date.to"
+                                   md-min-date="$ctrl.property.date.from"
+                                   required>
+
+                    </md-datepicker>
                 </md-input-container>
             </div>
 
@@ -99,7 +77,7 @@
                     <input md-no-asterisk
                            name="unit"
                            ng-disabled="form_on_submit"
-                           ng-model="property.addr.unit">
+                           ng-model="$ctrl.property.addr.unit">
                 </md-input-container>
             </div>
 
@@ -109,7 +87,7 @@
                 <textarea required
                           md-no-asterisk
                           ng-disabled="form_on_submit"
-                          ng-model="property.desc"
+                          ng-model="$ctrl.property.desc"
                           md-maxlength="150" rows="5"
                           md-select-on-focus></textarea>
             </md-input-container>
@@ -120,7 +98,7 @@
                      ngf-select
                      ngf-drop
                      ng-disabled="form_on_submit"
-                     ng-model="property.photos"
+                     ng-model="$ctrl.property.photos"
                      class="drop-box"
                      ngf-drag-over-class="'dragover'"
                      ngf-multiple="true"
@@ -135,13 +113,13 @@
 
                     <span>
                         <md-icon class="material-icons md-dark">cloud_upload</md-icon>
-                        &nbsp select or drop <ng-show ng-show="property.photos.length">more</ng-show> photos
+                        &nbsp select or drop <ng-show ng-show="$ctrl.property.photos.length">more</ng-show> photos
                     </span>
                 </div>
             </div>
 
             <!-- photo preview -->
-            <div ng-show="property.photos.length">
+            <div ng-show="$ctrl.property.photos.length">
                 <span>Photo preview: </span>
                 <div layout="row"
                      layout-wrap>
@@ -151,7 +129,7 @@
                                    layout-margin
                                    layout="column"
                                    layout-align="start strech"
-                                   ng-repeat="photo in property.photos"
+                                   ng-repeat="photo in $ctrl.property.photos"
                                    ng-cloak>
                         <div layout="row" class="photo-thumbnail-title">
                             <div flex="70" style="margin: auto" md-truncate>
@@ -160,7 +138,7 @@
                             <div flex="25">
                                 <md-button class="md-icon-button"
                                            aria-label="Delete"
-                                           ng-click="delete_photo(photo)"
+                                           ng-click="deletePhoto($ctrl.property, photo)"
                                            ng-disabled="form_on_submit">
                                     <md-icon class="material-icons md-dark">delete</md-icon>
                                 </md-button>
