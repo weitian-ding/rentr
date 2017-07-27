@@ -6,9 +6,9 @@
 (function() {
     'use strict';
 
-    angular.module('app').component('search.results', {
+    angular.module('app.property').component('propertyList', {
         bindings: { properties: '<' },
-        templateUrl: 'app/properties/properties.html',
+        templateUrl: 'app/property/list/property.list.html',
         controller: function($scope, $animate) {
             console.log(this.properties);
 

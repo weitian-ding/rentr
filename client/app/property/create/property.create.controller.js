@@ -6,10 +6,11 @@
 (function() {
     'use strict';
 
-    angular.module('app')
+    angular.module('app.property')
         .controller('PropertyCreateCtrl', PropertyCreateController);
 
-    function PropertyCreateController($scope, $log, Upload, propertyService) {
+    /* @ngInject */
+    function PropertyCreateController($scope, $log, propertyService) {
 
         var vm = this;
 

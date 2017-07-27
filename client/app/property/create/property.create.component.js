@@ -5,7 +5,7 @@
 (function() {
     'use strict';
 
-    angular.module('app').component('propertyCreate', {
+    angular.module('app.property').component('propertyCreate', {
         templateUrl: 'app/property/create/property.create.html',
         controller: 'PropertyCreateCtrl'
     });

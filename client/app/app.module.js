@@ -6,21 +6,12 @@
     'use strict';
 
     angular.module('app', [
-        // Angular modules
-        'ngRoute',
-        'ngAnimate',
-        'ngMaterial',
-        'ngMessages',
-
-        // 3rd Party Modules
-        'ngStorage',
-        'ui.router',
-        'ngFileUpload',
-        'jkAngularCarousel',
-        //'ui.bootstrap',
+        // Shared
+        'app.core',
 
         // Custom modules
-        'app.login'
+        'app.login',
+        'app.property'
     ]);
 
 })();

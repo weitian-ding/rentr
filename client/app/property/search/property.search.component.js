@@ -4,8 +4,8 @@
 (function() {
   'use strict';
 
-    angular.module('app').component('home', {
-        templateUrl: 'app/properties/property.search.html',
+    angular.module('app').component('propertySearch', {
+        templateUrl: 'app/property/search/property.search.html',
         controller: function($scope) {
             $scope.query = {};
             $scope.cities = [{city: 'Waterloo', state: 'ON'}, {city :'Toronto', state: 'ON'}];

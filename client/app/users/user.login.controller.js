@@ -16,7 +16,7 @@
                 }).then(function (user) {
                     console.log(user.data);
                     sessionService.set_first_name(user.data.first_name);
-                    $state.go('home.query');
+                    $state.go('app.property.search');
                 }, function (response) {
                     console.log(response.data || "login failed");
                     console.log(response.status);

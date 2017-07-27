@@ -4,6 +4,7 @@
     angular.module('app')
         .config(function ($stateProvider, $urlRouterProvider) {
 
+            // TODO refactor to a service
             var checkLoggedIn = function ($q, $timeout, $http, $state, sessionService) {
                 var deferred = $q.defer();
 
@@ -33,23 +34,24 @@
                     templateUrl: 'app/users/user.login.html'
                 })
 
-                .state('home', {
+                .state('app', {
                     abstract: true,
                     url: '/home',
                     component: 'layout',
                     resolve: {
                         loggedIn: checkLoggedIn
                     }
-                })
+                });
 
+                /*
                 .state('home.query', {
                     url: '',
-                    component: 'home'
+                    component: 'propertySearch'
                 })
 
                 .state('home.search', {
                     url: '/search/results',
-                    component: 'search.results',
+                    component: 'propertyList',
                     resolve: {
                         properties: function(propertyService) {
                             return propertyService.fetch_properties();
@@ -59,9 +61,10 @@
 
                 .state('home.post', {
                     url: '/property/create',
-                    component: 'property.create'
+                    component: 'propertyCreate'
                 }
                 );
+                */
         });
 
 })();
